@@ -1,0 +1,56 @@
+﻿=
+@font-face {
+    font-family: "Poppins";
+    font: url(https://fonts.google.com/specimen/Poppins) format("truetype");
+}
+
+p.customfont {
+    font-family: "Poppins", Verdana, Tahoma;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", Verdana, Tahoma;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #EEF9AF;
+}
+.header {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:20px 100px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+}
+.navbar{
+    display:flex;
+    gap:20px;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+}
+.navbar2 {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+img{
+    max-width:100%;
+    max-height:100%;
+}
+.Image1{
+    display:flex;
+    width:404px;
+    height:105px;
+    align-items:center;
+}
