@@ -82,3 +82,100 @@ img{
     width:1894px;
     height:200px
 }
+
+.no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+.container-wrap.product {
+    flex-wrap: wrap;
+    gap: 0px;
+}
+
+.product-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: calc(100%/6);
+    height: 390px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    margin: 14px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    position: relative;
+    border: 1px solid gainsboro;
+}
+
+    .product-box:hover {
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        border: 1px solid #727272;
+    }
+
+.product-image {
+    display: flex;
+    aspect-ratio: 1;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+    .product-image img {
+        width: 100%;
+    }
+
+.product-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.product-price {
+    color: black;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+}
+
+.product-name {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    height: 4.15em;
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.BuyNowBtn {
+    color: white;
+    display: flex;
+    width: 130px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background: #e13636;
+    cursor: pointer;
+}
+
+    .BuyNowBtn:hover {
+        transition: 0.3s;
+        opacity: 0.8;
+    }
+
+    .BuyNowBtn:not(:hover) {
+        opacity: 1;
+        transition: 0.3s;
+    }

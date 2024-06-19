@@ -1,4 +1,5 @@
-﻿using System;
+﻿using codeweb.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,13 @@ namespace codeweb.Controllers
 {
     public class HomeController : Controller
     {
+
+        private DoAnEntities1 db = new DoAnEntities1();
+
         public ActionResult Index()
         {
-            return View();
+            var clothes = db.Clothes.Take(10);
+            return View(clothes);
         }
 
         public ActionResult About()

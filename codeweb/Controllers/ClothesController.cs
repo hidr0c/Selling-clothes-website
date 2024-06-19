@@ -14,6 +14,11 @@ namespace codeweb.Controllers
     {
         private DoAnEntities1 db = new DoAnEntities1();
 
+        public PartialViewResult PartialProduct(Cloth product)
+        {
+            return PartialView(product);
+        }
+
         // GET: Clothes
         public ActionResult Index()
         {
