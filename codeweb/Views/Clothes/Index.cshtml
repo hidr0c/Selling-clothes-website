@@ -1,0 +1,82 @@
+﻿@model IEnumerable<codeweb.Models.Cloth>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NameClothes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BuyPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoldPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Discount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FinalSoldPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClothesImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Brand.NameBrand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.NameCategory)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameClothes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BuyPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoldPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Discount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FinalSoldPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClothesImage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brand.NameBrand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.NameCategory)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDClothes.Trim() }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDClothes.Trim() }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDClothes.Trim() })
+        </td>
+    </tr>
+}
+
+</table>
