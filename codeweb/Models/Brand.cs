@@ -12,19 +12,19 @@ namespace codeweb.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Cart
+    public partial class Brand
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Cart()
+        public Brand()
         {
-            this.CartDetails = new HashSet<CartDetail>();
+            this.Clothes = new HashSet<Cloth>();
         }
     
-        public string IDCart { get; set; }
-        public Nullable<System.DateTime> TimeCart { get; set; }
-        public int Total { get; set; }
+        public string IDBrand { get; set; }
+        public string NameBrand { get; set; }
+        public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CartDetail> CartDetails { get; set; }
+        public virtual ICollection<Cloth> Clothes { get; set; }
     }
 }

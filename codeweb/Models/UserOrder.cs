@@ -12,19 +12,27 @@ namespace codeweb.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Cart
+    public partial class UserOrder
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Cart()
+        public UserOrder()
         {
-            this.CartDetails = new HashSet<CartDetail>();
+            this.OrderDetails = new HashSet<OrderDetail>();
         }
     
-        public string IDCart { get; set; }
-        public Nullable<System.DateTime> TimeCart { get; set; }
-        public int Total { get; set; }
+        public string IDOrder { get; set; }
+        public System.DateTime TimeOrder { get; set; }
+        public int TotalQuantity { get; set; }
+        public string OrderStatus { get; set; }
+        public decimal TotalMoney { get; set; }
+        public string OrderAddress { get; set; }
+        public string PhoneNum { get; set; }
+        public string CustomerID { get; set; }
+        public int IDStaff { get; set; }
     
+        public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CartDetail> CartDetails { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual Staff Staff { get; set; }
     }
 }

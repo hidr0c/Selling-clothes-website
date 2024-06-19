@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e873d90e0c06410c82e3b7cb97eda687" Name="Diagram1">
+        <EntityTypeShape EntityType="DoAnModel.Brand" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnModel.Cart" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnModel.CartDetail" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnModel.Category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnModel.Cloth" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnModel.Customer" Width="1.5" PointX="3.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnModel.OrderDetail" Width="1.5" PointX="8.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnModel.Staff" Width="1.5" PointX="3.75" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnModel.UserOrder" Width="1.5" PointX="6" PointY="12.875" IsExpanded="true" />
+        <AssociationConnector Association="DoAnModel.FK__Clothes__IDBrand__7B5B524B" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnModel.FK__CartDetai__IDCar__04E4BC85" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnModel.FK__CartDetai__IDClo__03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnModel.FK__Clothes__IDCateg__7C4F7684" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnModel.FK__OrderDeta__IDClo__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnModel.FK__UserOrder__Custo__00200768" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnModel.FK__OrderDeta__IDOrd__08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnModel.FK__UserOrder__IDSta__01142BA1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
