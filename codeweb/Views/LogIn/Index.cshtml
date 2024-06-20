@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Log In";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập</title>
+    <link rel="stylesheet" href="Index.css">
+</head>
+<body>
+    <div class="container">
+        <form class="form" id="login-form">
+            <h2>Đăng Nhập</h2>
+            <div class="form-control">
+                <label for="username">Tên Đăng Nhập</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-control">
+                <label for="password">Mật Khẩu</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit">Đăng Nhập</button>
+            <p>Bạn chưa có tài khoản? <a href="SignIn">Đăng Ký</a></p>
+        </form>
+    </div>
+</body>
+</html>
+
