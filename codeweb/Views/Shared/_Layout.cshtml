@@ -15,28 +15,24 @@
     @RenderSection("styles", required: false)
 </head>
 <body style="overflow-x: hidden">
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-        @*<div class="container">
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                </ul>
-            </div>
-        </div>*@
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
-    </div>
+    <div>
+        <div class="Header" style="display:flex; align-items:center; justify-content:space-between; padding-bottom:50px">
+            <a href=@Url.Action("Index") class="logo" style="color: black; text-decoration:none;font-size:50px; font-family:'Volkhov,serif';font-weight:300">PXT</a>
+            <nav class="navbar">
+                <a href=@Url.Action("Index") style="color: black; text-decoration:none;font-size:20px">Home</a>
+                <a href="#" style="color: black; text-decoration:none;font-size:20px">Shop</a>
+            </nav>
+            <nav class="navbar2">
+                <a href="#" style="color: black; text-decoration:none;font-size:20px">Sign in</a>
+                <a href="#" style="color: black; text-decoration:none;font-size:20px">Sign up</a>
+            </nav>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+        </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
 </body>
 </html>

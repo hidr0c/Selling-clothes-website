@@ -120,6 +120,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminUsersController.cs" />
     <Compile Include="Controllers\BrandsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ClothesController.cs" />
@@ -296,6 +297,11 @@
     <Content Include="Views\Brands\Edit.cshtml" />
     <Content Include="Views\Brands\Index.cshtml" />
     <Content Include="Views\Clothes\PartialProduct.cshtml" />
+    <Content Include="Views\AdminUsers\Create.cshtml" />
+    <Content Include="Views\AdminUsers\Delete.cshtml" />
+    <Content Include="Views\AdminUsers\Details.cshtml" />
+    <Content Include="Views\AdminUsers\Edit.cshtml" />
+    <Content Include="Views\AdminUsers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

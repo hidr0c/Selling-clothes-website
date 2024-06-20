@@ -34,5 +34,7 @@ namespace codeweb.Models
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
         public virtual DbSet<UserOrder> UserOrders { get; set; }
+
+        public System.Data.Entity.DbSet<codeweb.Models.AdminUser> AdminUsers { get; set; }
     }
 }
