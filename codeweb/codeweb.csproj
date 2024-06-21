@@ -125,7 +125,7 @@
     <Compile Include="Controllers\ClothesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogInController.cs" />
-    <Compile Include="Controllers\SignInController.cs" />
+    <Compile Include="Controllers\SignUpController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -304,7 +304,7 @@
     <Content Include="Views\AdminUsers\Details.cshtml" />
     <Content Include="Views\AdminUsers\Edit.cshtml" />
     <Content Include="Views\AdminUsers\Index.cshtml" />
-    <Content Include="Views\SignIn\Index.cshtml" />
+    <Content Include="Views\SignUp\Index.cshtml" />
     <Content Include="Views\LogIn\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

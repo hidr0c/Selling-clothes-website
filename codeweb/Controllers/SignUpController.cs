@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace codeweb.Controllers
 {
-    public class SignInController : Controller
+    public class SignUpController : Controller
     {
         // GET: SignIn
         public ActionResult Index()
