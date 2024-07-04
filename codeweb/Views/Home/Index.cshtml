@@ -1,4 +1,4 @@
-﻿@model IEnumerable<codeweb.Models.Cloth>
+﻿@model Tuple<IEnumerable <codeweb.Models.Product>,IEnumerable <codeweb.Models.Category >>
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="~/Content/CSS/Index.css" />
 </head>
 <body style="width:1894px;height:2626px">
-   @* <div>
+    @* <div>
         <div class="Header" style="display:flex; align-items:center; justify-content:space-between; padding-bottom:50px">
             <a href=@Url.Action("Index") class="logo" style="color: black; text-decoration:none;font-size:50px; font-family:'Volkhov,serif';font-weight:300">PXT</a>
             <nav class="navbar">
@@ -23,29 +23,23 @@
                 <a href="#" style="color: black; text-decoration:none;font-size:20px">Sign up</a>
             </nav>
         </div>*@
-        <div class="Header2">
-            <div class="banner">
-                <img src="~/img/banner1.png" />
-            </div>
-            <div class="banner-middle-wrapper">
-                <div class="image-container"></div>
-                <h2 style="color: #484848; font-size: 91px">ULTIMATE</h2>
-                <h2 style="color: #956D6D; font-size: 187px">SALE</h2>
-                <h2 style="color: #484848; font-size: 20px">NEW COLLECTION</h2>
-            </div>
-            <div class="banner">
-                <img src="~/img/banner1.png" />
-            </div>
+    <div class="Header2">
+        <div class="banner">
+            <img src="~/img/banner1.png" />
         </div>
-            <div style="position: relative; right: 50vw; background-color: #FEEAA2; width: 150vw; height: 200px; box-shadow: 0px 20px 52.29px 0px #4444440A;"></div>
+        <div class="banner-middle-wrapper">
+            <div class="image-container"></div>
+            <h2 style="color: #484848; font-size: 91px">ULTIMATE</h2>
+            <h2 style="color: #956D6D; font-size: 187px">SALE</h2>
+            <h2 style="color: #484848; font-size: 20px">NEW COLLECTION</h2>
+        </div>
+        <div class="banner">
+            <img src="~/img/banner1.png" />
+        </div>
     </div>
+    <div style="position: relative; right: 50vw; background-color: #FEEAA2; width: 150vw; height: 200px; box-shadow: 0px 20px 52.29px 0px #4444440A;"></div>
     <div style="height: 100vh; margin: 4rem 0;">
-        <div class="container-wrap product">
-            @foreach (var product in Model)
-            {
-                Html.RenderPartial("../Clothes/PartialProduct", product, ViewData);
-            }
-        </div>
+
     </div>
 </body>
 </html>

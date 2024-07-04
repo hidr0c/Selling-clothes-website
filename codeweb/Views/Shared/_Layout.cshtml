@@ -17,19 +17,20 @@
 <body style="overflow-x: hidden">
     <div>
         <div class="Header" style="display:flex; align-items:center; justify-content:space-between; padding-bottom:50px">
-            <a href=@Url.Action("Index","Home") class="logo" style="color: black; text-decoration:none;font-size:50px; font-family:'Volkhov,serif';font-weight:300">PXT</a>
+            <a href=@Url.Action("Index") class="logo" style="color: black; text-decoration:none;font-size:50px; font-family:'Volkhov,serif';font-weight:300">PXT</a>
             <nav class="navbar">
-                <a href=@Url.Action("Index","Home") style="color: black; text-decoration:none;font-size:20px">Home</a>
+                <a href=@Url.Action("Index") style="color: black; text-decoration:none;font-size:20px">Home</a>
                 <a href="#" style="color: black; text-decoration:none;font-size:20px">Shop</a>
             </nav>
             <nav class="navbar2">
-                <a href=@Url.Action("Index","LogIn") style="color: black; text-decoration:none;font-size:20px">Sign in</a>
-                <a href=@Url.Action("Index","SignUp") style="color: black; text-decoration:none;font-size:20px">Sign up</a>
+                <a href="#" style="color: black; text-decoration:none;font-size:20px">Sign in</a>
+                <a href="#" style="color: black; text-decoration:none;font-size:20px">Sign up</a>
             </nav>
         </div>
         <div class="container body-content">
             @RenderBody()
         </div>
+    </div>
 
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")

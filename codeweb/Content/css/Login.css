@@ -1,6 +1,6 @@
 ﻿body {
     margin: 0;
-    background-color: #FFFFFF;
+    background-color: #323232;
 }
 
 .container {
@@ -11,11 +11,11 @@
 }
 
 .popup {
-    width: 466px;
-    height: 80%;
+    width: 25vw;
+    height: 60vh;
     display: flex;
     border-radius: 10px;
-    background: var(--bg, #F8FDDD);
+    background: var(--bg, #FBFBFB);
 }
 
 .wrapper {
