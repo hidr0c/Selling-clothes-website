@@ -1,8 +1,10 @@
-namespace codeweb.Models
+namespace anhemtoicodeweb.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
 
     [Table("OrderPro")]
     public partial class OrderPro
@@ -19,13 +21,8 @@ namespace codeweb.Models
         public DateTime? DateOrder { get; set; }
 
         public int? IDCus { get; set; }
-        public int PhoneNumber { get; set; }
-        public string AddressDelivery { get; set; }
 
-        public decimal TotalAmount { get; set; }
-        public decimal TotalMoney { get; set; }
-        public decimal TotalTax { get; set; }
-        public decimal TotalDiscount { get; set; }
+        public string AddressDelivery { get; set; }
 
         public virtual Customer Customer { get; set; }
 

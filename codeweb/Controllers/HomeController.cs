@@ -1,16 +1,19 @@
-﻿using codeweb.Models;
+﻿using anhemtoicodeweb.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using System.Web;
+using System.Web.Management;
 using System.Web.Mvc;
+using System.Web.UI;
 
-namespace codeweb.Controllers
+namespace anhemtoicodeweb.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly Model1 database = new Model1();
+        private Model1 database = new Model1();
         public ActionResult Index()
         {
             IEnumerable<Product> productList = database.Products.OrderByDescending(x => x.NamePro).ToList();
@@ -42,6 +45,8 @@ namespace codeweb.Controllers
         {
             if (query == null || query.Length == 0)
             {
+                ViewBag.MaxPage = 0;
+                ViewBag.CurrentPage = 0;
                 return View();
             }
             query = NormalizeDiacriticalCharacters(query);

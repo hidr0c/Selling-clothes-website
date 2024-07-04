@@ -1,14 +1,16 @@
-﻿using codeweb.Models;
+﻿using anhemtoicodeweb.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
-namespace codeweb.Controllers
+namespace anhemtoicodeweb.Controllers
 {
     public class ProfileController : Controller
     {
-        private readonly Model1 database = new Model1();
+        Model1 database = new Model1();
         public ActionResult Index()
         {
             int _userId = (int?)Session["UserId"] ?? -1;

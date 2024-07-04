@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 
-namespace codeweb.Models
+namespace anhemtoicodeweb.Models
 {
     public class CartItem
     {
@@ -11,7 +13,7 @@ namespace codeweb.Models
 
     public class Cart
     {
-        private readonly List<CartItem> items = new List<CartItem>();
+        List<CartItem> items = new List<CartItem>();
         public IEnumerable<CartItem> Items
         {
             get { return items; }
@@ -27,13 +29,11 @@ namespace codeweb.Models
                     _quantity = quantity,
                     _product = product
                 });
-                return;
             }
-
-            var tempQ = quantity + item._quantity;
-            if (tempQ > product.InvQuantity)
-                tempQ = product.InvQuantity;
-            item._quantity = tempQ;
+            else
+            {
+                item._quantity += quantity;
+            }
         }
 
         public int TotalQuantity()
@@ -44,7 +44,7 @@ namespace codeweb.Models
         public decimal TotalMoney()
         {
             var total = items.Sum(s => s._quantity * s._product.Price);
-            return total;
+            return (decimal)total;
         }
 
         public void UpdateQuantity(int id, int new_quantity)

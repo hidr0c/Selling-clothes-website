@@ -1,14 +1,18 @@
-﻿using codeweb.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
+using anhemtoicodeweb.Models;
 
-namespace codeweb.Controllers
+namespace anhemtoicodeweb.Controllers
 {
     public class CustomersController : Controller
     {
-        private readonly Model1 db = new Model1();
+        private Model1 db = new Model1();
 
         public ActionResult Index()
         {

@@ -1,12 +1,17 @@
-﻿using codeweb.Models;
+﻿using anhemtoicodeweb.Models;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net.Http;
+using System.Web;
 using System.Web.Mvc;
 
-namespace codeweb.Controllers
+namespace anhemtoicodeweb.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly Model1 database = new Model1();
+        Model1 database = new Model1();
 
         // GET: LoginUser
         public ActionResult Index()
@@ -43,7 +48,7 @@ namespace codeweb.Controllers
             return View();
         }
 
-        public ActionResult RegisterUser()
+        public ActionResult RegisterUser() 
         {
             return View();
         }

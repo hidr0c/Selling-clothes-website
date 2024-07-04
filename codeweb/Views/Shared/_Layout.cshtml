@@ -6,25 +6,41 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @RenderSection("styles", required: false)
+    @RenderSection("Styles", false)
+    <style>
+        .error-info {
+            border-radius: 10px;
+            font-size: large;
+            text-align: center;
+            background: #ff000070;
+            border: #ff0000b5 2px solid;
+            width: max-content;
+            height: max-content;
+            line-height: normal;
+            padding: 5px;
+        }
+    </style>
+    <link href="@Url.Content("~/Content/css/Index.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+
 </head>
 <body style="overflow-x: hidden">
     <div>
-        <div class="Header" style="display:flex; align-items:center; justify-content:space-between; padding-bottom:50px">
-            <a href=@Url.Action("Index") class="logo" style="color: black; text-decoration:none;font-size:50px; font-family:'Volkhov,serif';font-weight:300">PXT</a>
+        <div class="Header">
+            <a href=@Url.Action("Index", "Home") class="logo" style="color: black; text-decoration:none;font-size:50px; font-family:'Volkhov,serif';font-weight:300">PXT</a>
             <nav class="navbar">
-                <a href=@Url.Action("Index") style="color: black; text-decoration:none;font-size:20px">Home</a>
+                <a href=@Url.Action("Index", "Home") style="color: black; text-decoration:none;font-size:20px">Home</a>
                 <a href="#" style="color: black; text-decoration:none;font-size:20px">Shop</a>
+                <a href=@Url.Action("Search", "Home") style="color: black; text-decoration:none;font-size:20px">Search</a>
             </nav>
             <nav class="navbar2">
-                <a href="#" style="color: black; text-decoration:none;font-size:20px">Sign in</a>
-                <a href="#" style="color: black; text-decoration:none;font-size:20px">Sign up</a>
+                <a href="@Url.Action("Index", "Login")" style="color: black; text-decoration:none;font-size:20px">Sign in</a>
+                <a href="@Url.Action("RegisterUser", "Login")" style="color: black; text-decoration:none;font-size:20px">Sign up</a>
             </nav>
         </div>
         <div class="container body-content">
@@ -32,8 +48,8 @@
         </div>
     </div>
 
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("JavaScript", required: false)
 </body>
 </html>

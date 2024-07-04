@@ -1,0 +1,68 @@
+﻿@model anhemtoicodeweb.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@section Styles {
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="@Url.Content("~/Content/css/ProductDetails.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
+}
+
+<div style="margin-bottom: 24px" class="list-href">
+    <a href="/">Trang chủ</a>
+    >
+    <a href="/Products">Danh sách sản phầm</a>
+    >
+    <a href="/Categories/Details/@Model.Category.IDCate">@Model.Category.NameCate</a>
+    >
+    <a href="@Request.Path"><b>@Model.NamePro</b></a>
+</div>
+
+
+<div>
+    <div class="product-container">
+        <div class="image">
+            <div style="position: relative; border-radius:20px; overflow: hidden;">
+                @if (Model.InvQuantity == 0)
+                {
+                    <div class="no-select out-of-stock-overlay">Hết hàng</div>
+                }
+                <img src="@Url.Content(Model.ImagePro)" style="width: 100%" alt="Product image" />
+                @*<img src="~/Image/Product/BanChaiTre.png" alt="Product image" />*@
+            </div>
+        </div>
+        <div class="text">
+            <div>
+                <h2> @Html.DisplayFor(model => model.NamePro) </h2>
+            </div>
+            <div>
+                <l>@Html.DisplayFor(model => model.DecriptionPro) </l>
+            </div>
+            <div>
+                <b style="color: #4E6C50">@(String.Format("{0:#,#.##}", Model.Price))đ </b>
+            </div>
+            <div class="button-container">
+                <div class="d-flex gap-4" style="padding-left:30px;padding-top:10px">
+                    @if (Model.InvQuantity == 0)
+                    {
+                        <a class="no-select AddToCart out-of-stock">Thêm vào giỏ hàng</a>
+                    }
+                    else
+                    {
+                        <a href="/ShoppingCart/AddToCart/@Model.ProductID" class="no-select AddToCart">Thêm vào giỏ hàng</a>
+                    }
+                </div>
+                @if (Session["IsAdmin"] is true)
+                {
+                    <div class="d-flex gap-4" style="padding-left:20px;padding-top:10px">
+                        @Html.ActionLink("Edit product", "Edit", new { id = Model.ProductID }, new { @class = "no-select EditBtn" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

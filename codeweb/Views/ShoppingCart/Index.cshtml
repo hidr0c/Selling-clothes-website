@@ -1,0 +1,146 @@
+﻿@model anhemtoicodeweb.Models.Cart
+
+@{
+    ViewBag.Title = "ShowCart";
+    string placeholder_addr = (TempData["Address"] != null && (string)TempData["Address"] != "") ? "Bỏ trống nếu muốn dùng địa chỉ cũ" : "Nhập địa chỉ giao hàng";
+    string TotalMoney = "";
+    if (Model != null && Model.Items.Count() > 0)
+    {
+        TotalMoney = String.Format(": {0:#,#.##}đ", Model.TotalMoney());
+    }
+}
+
+@section Styles {
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="@Url.Content("~/Content/css/Index.css")" rel="stylesheet" type="text/css" />
+    <style>
+        .item-container {
+            display: flex;
+            height: 100%;
+            max-height: 320px;
+            overflow: hidden;
+            background: white;
+            padding: 12px;
+            margin: 10px 0px 20px 0px;
+            border-radius: 10px;
+            flex-direction: column;
+        }
+
+        .flex-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .image-wrapper {
+            height: 100%;
+            width: 15%;
+        }
+
+        .quantity-input {
+            width: 85%;
+            border-radius: 6px;
+            border: #5b5b5b solid 1px;
+        }
+
+        .text h3 {
+            font-size: 12px;
+        }
+
+        .empty-cart {
+            border-radius: 10px;
+            margin: 20px 0px;
+            width: 100%;
+            background-color: white;
+            height: 10vh;
+            line-height: 10vh;
+            text-align: center;
+            font-size: x-large;
+        }
+
+        .preview-img {
+            aspect-ratio: 1;
+            width: 60px;
+            position: relative;
+            transform: translateX(30%);
+        }
+
+        table {
+            margin: 20px 0;
+        }
+
+        .close {
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            font-size: 35px;
+            top: -10px;
+            right: 0;
+            cursor: pointer;
+            transform: rotate(45deg);
+            color: red;
+            transition: all 0.2s ease;
+        }
+
+        .product-box:hover .close {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+}
+
+<h2>Giỏ hàng của bạn@(TotalMoney)</h2>
+<a href="@Url.Action("Index", "Products")">&#8592 Tiếp tục mua hàng</a>
+@if (Model != null && Model.Items.Count() > 0)
+{
+    <div class="container-wrap product" style="justify-content: center; gap: 12px">
+        @foreach (var item in Model.Items)
+        {
+            <div class="product-box">
+                <a href="/ShoppingCart/RemoveCart/@item._product.ProductID" class="no-select close">+</a>
+                <div class="position-relative product-image">
+                    <img src="@Url.Content(item._product.ImagePro)" />
+                </div>
+                <div class="product-content">
+                    <div class="main-content">
+                        <div class="product-price">@(String.Format("{0:#,#.##}", item._product.Price))đ</div>
+                        <a href="@Url.Action("Details", "Products", new { id = item._product.ProductID })" style="text-decoration: none">
+                            <div class="product-name">@item._product.NamePro</div>
+                        </a>
+                    </div>
+                    @using (Html.BeginForm("UpdateCartQuantity", "ShoppingCart"))
+                    {
+                        <div style="padding-bottom: 5px">Số lượng</div>
+                        <input type="hidden" value="@item._product.ProductID" name="idPro" />
+                        <input class="quantity-input" type="number" min="0" max="@item._product.InvQuantity" value="@item._quantity" name="cartQuantity" />
+                        <input style="background-color: transparent; border: none" type="submit" value="✓" />
+                    }
+                </div>
+            </div>
+        }
+    </div>
+    <div class="d-flex flex-column mt-5 align-items-center">
+        @if (Session["UserId"] != null)
+        {
+            using (Html.BeginForm("Checkout", "ShoppingCart", FormMethod.Post, new { style = "display: flex; gap: 10px;" }))
+            {
+                <input type="hidden" value="@Session["UserId"]" name="CodeCustomer" />
+                <input style="text-indent: 5px; border-radius: 6px; border: black 1px solid" type="text" name="AddressDelivery" placeholder="@placeholder_addr" title="@placeholder_addr" />
+                <input class="btn btn-success" type="submit" value="Đi đến thanh toán" />
+            }
+        }
+        else
+        {
+            <div>Bạn cần phải đăng nhập hoặc đăng ký trước khi thanh toán</div>
+            <div>
+                <a href="@Url.Action("Index","Login")" class="btn btn-success">Đăng nhập</a>
+                <a href="@Url.Action("RegisterUser","Login")" class="btn btn-success">Đăng ký</a>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="empty-cart">
+        Chưa có sản phầm nào trong giỏ hàng...
+    </div>
+}

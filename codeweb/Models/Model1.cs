@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
-using codeweb.Models;
+using System.Linq;
 
-namespace codeweb.Models
+namespace anhemtoicodeweb.Models
 {
     public partial class Model1 : DbContext
     {

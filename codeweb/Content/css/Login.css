@@ -11,7 +11,7 @@
 }
 
 .popup {
-    width: 25vw;
+    width: 466px;
     height: 60vh;
     display: flex;
     border-radius: 10px;
@@ -58,10 +58,10 @@
     width: 100%;
     height: 46px;
     border-radius: 8px;
-    background-color: #4E6C50;
+    background-color: #FEEAA2;
     border: none;
     text-align: center;
-    color: white;
+    color: black;
 }
 
 

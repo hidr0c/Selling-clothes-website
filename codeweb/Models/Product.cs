@@ -1,8 +1,10 @@
-namespace codeweb.Models
+namespace anhemtoicodeweb.Models
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
     using System.Web;
 
     public partial class Product
@@ -11,14 +13,7 @@ namespace codeweb.Models
         public Product()
         {
             OrderDetails = new HashSet<OrderDetail>();
-            NamePro = "None";
-            DecriptionPro = "None";
-
-            InvQuantity = 0;
             Price = 0;
-            Discount = 0;
-            Tax = 0;
-
             ImagePro = "~/Image/Product/CuonTuiRac.jpg";
         }
 
@@ -33,9 +28,7 @@ namespace codeweb.Models
         [StringLength(20)]
         public string IDCate { get; set; }
 
-        public decimal Price { get; set; }
-        public decimal Discount { get; set; }
-        public decimal Tax { get; set; }
+        public decimal? Price { get; set; }
 
         public string ImagePro { get; set; }
 
@@ -43,7 +36,7 @@ namespace codeweb.Models
         public string OldImagePro { get; set; }
 
         [NotMapped]
-        public HttpPostedFileBase UploadImage { get; set; }
+        public HttpPostedFileBase UploadImage {  get; set; }
 
         public virtual Category Category { get; set; }
 

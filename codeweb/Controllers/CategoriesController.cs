@@ -1,17 +1,18 @@
-﻿using codeweb.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
+using anhemtoicodeweb.Models;
 
-namespace codeweb.Controllers
+namespace anhemtoicodeweb.Controllers
 {
     public class CategoriesController : Controller
     {
-        private readonly Model1 db = new Model1();
+        private Model1 db = new Model1();
 
         public ActionResult Index()
         {
@@ -20,8 +21,7 @@ namespace codeweb.Controllers
             {
                 return PartialView(category.ToList());
             }
-
-            return RedirectToAction("Details", new { id = db.Categories.Where(e => e.Id == 1) });
+            return RedirectToAction("Details", new { id = "1" });
         }
 
         public ActionResult Details(string id, int page = 1)
@@ -30,7 +30,6 @@ namespace codeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
             Category category = db.Categories.Find(id);
             if (category == null)
             {
@@ -38,7 +37,7 @@ namespace codeweb.Controllers
             }
             IEnumerable<Product> productList = category.Products.ToList();
 
-            int maxPage = Math.Max(1, productList.Count() / 10);
+            int maxPage = Math.Max(1,productList.Count() / 10);
             if (page > maxPage)
             {
                 page = maxPage;

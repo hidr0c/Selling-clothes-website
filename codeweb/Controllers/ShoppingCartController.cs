@@ -1,18 +1,17 @@
-﻿using codeweb.Models;
+﻿using anhemtoicodeweb.Models;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.IO;
 using System.Linq;
-using System.Net;
+using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace KetNoiDatabase.Controllers
 {
     public class ShoppingCartController : Controller
     {
         // GET: ShoppingCart
-        private readonly Model1 database = new Model1();
+        Model1 database = new Model1();
         public ActionResult Index()
         {
             if (Session["Cart"] == null)
@@ -41,26 +40,14 @@ namespace KetNoiDatabase.Controllers
             return cart;
         }
 
-        [HttpPost]
-        public ActionResult AddToCart()
+        public ActionResult AddToCart(int id)
         {
-            int id;
-            using (StreamReader reader = new StreamReader(HttpContext.Request.InputStream))
-            {
-                if (!int.TryParse(reader.ReadLine(), out id))
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-            }
-
             var _pro = database.Products.SingleOrDefault(s => s.ProductID == id);
-            if (_pro == null)
+            if (_pro != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                GetCart().AddProductCart(_pro);
             }
-
-            GetCart().AddProductCart(_pro);
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
+            return RedirectToAction("Index", "ShoppingCart");
         }
 
         public ActionResult RemoveCart(int id)
@@ -132,38 +119,16 @@ namespace KetNoiDatabase.Controllers
                 _order.DateOrder = DateTime.Now;
                 _order.AddressDelivery = form["AddressDelivery"];
                 _order.IDCus = int.Parse(form["CodeCustomer"]);
-
-                decimal totalDiscount = 0;
-                decimal totalPrice = 0;
-                decimal totalTax = 0;
-                int totalQuantity = 0;
-
+                database.OrderProes.Add(_order);
                 foreach (var item in cart.Items)
                 {
-                    var prodTotal = (item._quantity * item._product.Price);
-                    var tax = prodTotal * item._product.Tax;
-                    var discount = item._product.Discount;
-                    if (discount >= 0 && discount <= 1)
-                    {
-                        discount = prodTotal * discount;
-                    }
-
                     OrderDetail _order_detail = new OrderDetail
                     {
-                        IDProduct = item._product.ProductID,
                         IDOrder = _order.ID,
-
-                        Quantity = item._quantity,
-                        UnitPrice = item._product.Price,
-                        Total = prodTotal - discount + tax,
-                        Discount = item._product.Discount,
-                        Tax = item._product.Tax,
+                        IDProduct = item._product.ProductID,
+                        UnitPrice = (double)item._product.Price,
+                        Quantity = item._quantity
                     };
-
-                    totalQuantity += item._quantity;
-                    totalDiscount += _order_detail.Discount;
-                    totalPrice += _order_detail.Total;
-                    totalTax += _order_detail.Tax;
                     database.OrderDetails.Add(_order_detail);
 
                     var _prod = database.Products.Find(item._product.ProductID);
@@ -171,12 +136,6 @@ namespace KetNoiDatabase.Controllers
                     database.Entry(_prod).State = EntityState.Modified;
                 }
 
-                _order.TotalMoney = totalPrice;
-                _order.TotalTax = totalTax;
-                _order.TotalDiscount = totalDiscount;
-                _order.TotalAmount = totalQuantity;
-
-                database.OrderProes.Add(_order);
                 database.SaveChanges();
                 cart.ClearCart();
                 return View("CheckOutSuccess", _order);

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<anhemtoicodeweb.Models.Product>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int CurrentPage = (int)ViewBag.CurrentPage;
+    int MaxPage = (int)ViewBag.MaxPage;
+    string query = Request.Params.Get("query");
+}
+
+@section Styles {
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="@Url.Content("~/Content/css/Index.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/Paginator.css")" rel="stylesheet" type="text/css" />
+}
+
+@if (Model != null && Model.Count() > 0)
+{
+    <h2>Kết quả tìm kiếm</h2>
+    <div class="container-wrap justify-content-start product">
+
+        @foreach (var product in Model)
+        {
+            Html.RenderPartial("../Products/PartialProduct", product, ViewData);
+        }
+    </div>
+    <div class="page-nav">
+        <div class="grid-nav-page">
+            @if (CurrentPage > 1)
+            {
+                <a class="page-btn" href="@Url.Action("Search", new { query = query, page = 1 })">&#171;</a>
+                <a class="page-btn" href="@Url.Action("Search", new { query = query, page = CurrentPage - 1 })">&#8249;</a>
+            }
+            @for (var i = 1; i <= Math.Min(MaxPage, 5); i++)
+            {
+                <a class="page-btn" href="@Url.Action("Search", new { query = query, page = i })">@i</a>
+            }
+            @if (CurrentPage < MaxPage)
+            {
+                <a class="page-btn" href="@Url.Action("Search", new { query = query, page = CurrentPage + 1 })">&#8250;</a>
+                <a class="page-btn" href="@Url.Action("Search", new { query = query, page = MaxPage })">&#187;</a>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <div class="d-flex align-content-center justify-content-center w-100 pt-5">
+        <form class="searchBox" method="get" action="@Url.Action("Search", "Home")">
+            <input type="text" class="searchBar" placeholder="Tìm kiếm..." name="query" />
+            <button type="submit" class="searchBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_1_2737)">
+                        <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="black" />
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_1_2737">
+                            <rect width="24" height="24" fill="black" />
+                        </clipPath>
+                    </defs>
+                </svg>
+            </button>
+        </form>
+</div>
+}

@@ -1,0 +1,48 @@
+﻿@model anhemtoicodeweb.Models.Customer
+
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="@Url.Content("~/Content/css/Login.css")" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            background-color: #bcc588 !important;
+        }
+
+        .Header {
+            position: relative;
+            z-index: 999;
+        }
+    </style>
+}
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+</style>
+
+<div style=" z-index: 1; top: 0; position: absolute; height: 100%; margin-left: auto; margin-right: auto; left: 0; right: 0; display: flex; justify-content: center; align-items: center;">
+    <form class="popup" method="post" action="@Url.Action("RegisterUser", "Login")">
+        <div class="wrapper">
+            <h1>Register</h1>
+            @if (ViewBag.ErrorRegister != null)
+            {
+                <div class="error-info">@ViewBag.ErrorRegister</div>
+            }
+            @Html.AntiForgeryToken()
+            <div class="input-field">
+                <input class="input-box" type="text" placeholder="Username" name="NameCus" id="NameCus" required>
+                <input class="input-box" type="password" placeholder="Password" name="PasswordCus" id="PasswordCus" required>
+                <input class="input-box" type="password" placeholder="Re-enter password" name="ConfirmPasswordCus" id="ConfirmPasswordCus" required>
+                <input class="input-box" type="Email" placeholder="Email (Optional)" name="EmailCus" id="EmailCus">
+            </div>
+            <input class="login-btn" type="submit" value="Register">
+            <a href="@Url.Action("Index", "Login")">&#8592 Back to Login</a>
+        </div>
+    </form>
+</div>
