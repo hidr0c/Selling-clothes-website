@@ -1,4 +1,4 @@
-namespace codeweb.Models
+﻿namespace codeweb.Models
 {
     using System;
     using System.Collections.Generic;
@@ -6,7 +6,9 @@ namespace codeweb.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-  /*  [Table("Brand")]
+  
+
+    [Table("Brand")]
     public partial class Brand
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -28,5 +30,5 @@ namespace codeweb.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
-    }*/
+    }
 }

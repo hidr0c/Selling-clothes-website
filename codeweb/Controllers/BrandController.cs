@@ -10,16 +10,16 @@ using codeweb.Models;
 
 namespace codeweb.Controllers
 {
-    /*public class BrandsController : Controller
+    public class CategoriesController : Controller
     {
         private Model1 db = new Model1();
 
         public ActionResult Index()
         {
-            var Brand = db.Brands.ToList();
+            var category = db.Categories.ToList();
             if (ControllerContext.IsChildAction)
             {
-                return PartialView(Brand.ToList());
+                return PartialView(category.ToList());
             }
             return RedirectToAction("Details", new { id = "1" });
         }
@@ -30,12 +30,12 @@ namespace codeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Brand Brand = db.Brands.Find(id);
-            if (Brand == null)
+            Category category = db.Categories.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            IEnumerable<Product> productList = Brand.Products.ToList();
+            IEnumerable<Product> productList = category.Products.ToList();
 
             int maxPage = Math.Max(1,productList.Count() / 10);
             if (page > maxPage)
@@ -45,7 +45,7 @@ namespace codeweb.Controllers
             ViewBag.MaxPage = maxPage;
             ViewBag.CurrentPage = page;
 
-            var tuple = new Tuple<Brand, IEnumerable<Product>>(Brand, productList.Skip((page - 1) * 10).Take(10));
+            var tuple = new Tuple<Category, IEnumerable<Product>>(category, productList.Skip((page - 1) * 10).Take(10));
             return View(tuple);
         }
 
@@ -61,7 +61,7 @@ namespace codeweb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDBrand,Id,BrandName")] Brand Brand)
+        public ActionResult Create([Bind(Include = "IDCate,Id,NameCate")] Category category)
         {
             if (Session["IsAdmin"] == null || Session["IsAdmin"] is false)
             {
@@ -70,12 +70,12 @@ namespace codeweb.Controllers
 
             if (ModelState.IsValid)
             {
-                db.Brands.Add(Brand);
+                db.Categories.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(Brand);
+            return View(category);
         }
 
         public ActionResult Edit(string id)
@@ -89,17 +89,17 @@ namespace codeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Brand Brand = db.Brands.Find(id);
-            if (Brand == null)
+            Category category = db.Categories.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(Brand);
+            return View(category);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDBrand,Id,BrandName")] Brand Brand)
+        public ActionResult Edit([Bind(Include = "IDCate,Id,NameCate")] Category category)
         {
             if (Session["IsAdmin"] == null || Session["IsAdmin"] is false)
             {
@@ -108,11 +108,11 @@ namespace codeweb.Controllers
 
             if (ModelState.IsValid)
             {
-                db.Entry(Brand).State = EntityState.Modified;
+                db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(Brand);
+            return View(category);
         }
 
         public ActionResult Delete(string id)
@@ -126,12 +126,12 @@ namespace codeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Brand Brand = db.Brands.Find(id);
-            if (Brand == null)
+            Category category = db.Categories.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(Brand);
+            return View(category);
         }
 
         [HttpPost, ActionName("Delete")]
@@ -143,8 +143,8 @@ namespace codeweb.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            Brand Brand = db.Brands.Find(id);
-            db.Brands.Remove(Brand);
+            Category category = db.Categories.Find(id);
+            db.Categories.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -157,5 +157,5 @@ namespace codeweb.Controllers
             }
             base.Dispose(disposing);
         }
-    }*/
+    }
 }

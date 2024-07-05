@@ -15,7 +15,7 @@
         nextArrow: "#slide2 .slick-next"
     });
 
-    //$("div.category").slick({
+    //$("div.Brand").slick({
     //    lazyLoad: 'ondemand',
     //    slidesToShow: 6,
     //    slidesToScroll: 1

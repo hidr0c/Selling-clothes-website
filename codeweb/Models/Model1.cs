@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Drawing.Drawing2D;
 using System.Linq;
 
 namespace codeweb.Models
@@ -13,20 +14,26 @@ namespace codeweb.Models
         }
 
         public virtual DbSet<AdminUser> AdminUsers { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
+/*        public virtual DbSet<Brand> Brands { get; set; }*/
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<OrderPro> OrderProes { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Brand> Brands { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AdminUser>()
                 .Property(e => e.IDCus);
 
-            modelBuilder.Entity<Category>()
-                .Property(e => e.IDCate)
-                .IsFixedLength();
+/*            modelBuilder.Entity<Brand>()
+                .Property(e => e.IDBrand)
+                .IsFixedLength();*/
+
+            modelBuilder.Entity<Brand>()
+            .Property(e => e.IDBrand)
+            .IsFixedLength();
+
 
             modelBuilder.Entity<OrderPro>()
                 .HasMany(e => e.OrderDetails)
@@ -34,7 +41,7 @@ namespace codeweb.Models
                 .HasForeignKey(e => e.IDOrder);
 
             modelBuilder.Entity<Product>()
-                .Property(e => e.IDCate)
+                .Property(e => e.IDBrand)
                 .IsFixedLength();
 
             modelBuilder.Entity<Product>()

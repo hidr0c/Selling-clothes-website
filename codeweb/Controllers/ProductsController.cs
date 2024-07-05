@@ -59,7 +59,7 @@ namespace codeweb.Controllers
             {
                 return RedirectToAction("Index");
             }
-            ViewBag.IDCate = new SelectList(db.Categories, "IDCate", "NameCate");
+            ViewBag.IDBrand = new SelectList(db.Brands, "IDBrand", "BrandName");
             return View(new Product());
         }
 
@@ -97,7 +97,7 @@ namespace codeweb.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IDCate = new SelectList(db.Categories, "IDCate", "NameCate", product.IDCate);
+            ViewBag.IDBrand = new SelectList(db.Brands, "IDBrand", "BrandName", product.IDBrand);
             return View(product);
         }
 
@@ -118,7 +118,7 @@ namespace codeweb.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IDCate = new SelectList(db.Categories, "IDCate", "NameCate", product.IDCate);
+            ViewBag.IDBrand = new SelectList(db.Brands, "IDBrand", "BrandName", product.IDBrand);
             return View(product);
         }
 
@@ -152,7 +152,7 @@ namespace codeweb.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IDCate = new SelectList(db.Categories, "IDCate", "NameCate", product.IDCate);
+            ViewBag.IDBrand = new SelectList(db.Brands, "IDBrand", "BrandName", product.IDBrand);
             return View(product);
         }
 

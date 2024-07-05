@@ -17,17 +17,17 @@ namespace codeweb.Controllers
         public ActionResult Index()
         {
             IEnumerable<Product> productList = database.Products.OrderByDescending(x => x.NamePro).ToList();
-            IEnumerable<Category> categoriesList = database.Categories.OrderByDescending(x => x.NameCate).ToList();
-            var tuple = new Tuple<IEnumerable<Product>, IEnumerable<Category>>(productList, categoriesList);
+            IEnumerable<Brand> BrandsList = database.Brands.OrderByDescending(x => x.BrandName).ToList();
+            var tuple = new Tuple<IEnumerable<Product>, IEnumerable<Brand>>(productList, BrandsList);
             return View(tuple);
         }
 
-        private void SearchInCategory(string query, ref List<Product> searchQuery)
+        private void SearchInBrand(string query, ref List<Product> searchQuery)
         {
             string norm_name;
-            foreach (var item in database.Categories)
+            foreach (var item in database.Brands)
             {
-                norm_name = NormalizeDiacriticalCharacters(item.NameCate);
+                norm_name = NormalizeDiacriticalCharacters(item.BrandName);
                 if (norm_name.Contains(query))
                 {
                     foreach (var prod in item.Products)
@@ -61,7 +61,7 @@ namespace codeweb.Controllers
                     searchQuery.Add(item);
                 }
             }
-            SearchInCategory(query, ref searchQuery);
+            SearchInBrand(query, ref searchQuery);
 
             int maxPage = Math.Max(1, searchQuery.Count() / 10);
             if (page > maxPage)

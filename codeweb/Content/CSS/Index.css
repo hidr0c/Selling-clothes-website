@@ -15,14 +15,14 @@ section {
     gap: 10px;*/
 }
 
-    /*Category section*/
-    .container-wrap.category {
+    /*Brand section*/
+    .container-wrap.Brand {
         justify-content: space-between;
         flex-wrap: wrap;
         gap: 10px;
     }
 
-.category-box {
+.Brand-box {
     width: calc( 100% / 7 - 15px);
     overflow: hidden;
     border-radius: 10px;
@@ -33,13 +33,13 @@ section {
 }
 
 
-.category-box img {
+.Brand-box img {
     width: 100%;
     height: auto;
     position: relative;
 }
 
-.category-box h3 {
+.Brand-box h3 {
     padding: 12px 4px 12px 4px;
     font-size: 22px;
     line-height: 24px;
@@ -191,21 +191,21 @@ section {
 }
 
 @media (max-width: 1200px) {
-    .category-box, .product-box {
+    .Brand-box, .product-box {
         width: calc( 100% / 5 - 15px);
     }
 
-    .container-wrap.category, .container-wrap.product {
+    .container-wrap.Brand, .container-wrap.product {
         justify-content: center;
     }
 }
 
 @media (max-width: 992px) {
-    .category-box {
+    .Brand-box {
         width: calc( 100% / 4 - 15px);
     }
 
-    .category-box h3 {
+    .Brand-box h3 {
         font-size: 16px;
         line-height: 1rem;
     }
@@ -216,7 +216,7 @@ section {
 }
 
 @media (max-width: 768px) {
-    .category-box {
+    .Brand-box {
         width: calc( 100% / 3 - 5px);
     }
 
@@ -229,7 +229,7 @@ section {
 }
 
 @media (max-width: 512px) {
-    .category-box {
+    .Brand-box {
         width: calc( 100%/2 - 5px);
         height: fit-content;
         height: -moz-fit-content;

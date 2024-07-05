@@ -36,8 +36,8 @@ else
                     <a href="@Url.Action("Details", "Products", new { id = item._product.ProductID })">@item._product.NamePro</a>
                 </td>
                 <td>
-                    <a href="@Url.Action("Details", "Categories", new { id = item._product.Category.Id })">
-                        @item._product.Category.NameCate
+                    <a href="@Url.Action("Details", "Brands", new { id = item._product.Brand.Id })">
+                        @item._product.Brand.BrandName
                     </a>
                 </td>
                 <td>

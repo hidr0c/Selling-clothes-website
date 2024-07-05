@@ -74,8 +74,8 @@
         <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#productsCollapse" aria-expanded="false" aria-controls="productsCollapse">
             Products
         </button>
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#categoryCollapse" aria-expanded="false" aria-controls="categoryCollapse">
-            Category
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#BrandCollapse" aria-expanded="false" aria-controls="BrandCollapse">
+            Brand
         </button>
         <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#customersCollapse" aria-expanded="false" aria-controls="customersCollapse">
             Customers
@@ -87,9 +87,9 @@
         }
         <hr />
     </div>
-    <div class="px-3 collapse" id="categoryCollapse">
+    <div class="px-3 collapse" id="BrandCollapse">
         @{
-            Html.RenderAction("Index", "Categories");
+            Html.RenderAction("Index", "Brands");
         }
         <hr />
     </div>
