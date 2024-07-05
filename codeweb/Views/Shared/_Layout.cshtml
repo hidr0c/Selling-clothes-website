@@ -96,6 +96,10 @@
         </div>
     </nav>
 
+    <div class="body-content container">
+        @RenderBody()
+        </div>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("JavaScript", required: false)
