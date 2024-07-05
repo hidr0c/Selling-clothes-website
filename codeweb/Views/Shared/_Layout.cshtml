@@ -25,28 +25,76 @@
             padding: 5px;
         }
     </style>
-    <link href="@Url.Content("~/Content/css/Index.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
-
 </head>
-<body style="overflow-x: hidden">
-    <div>
-        <div class="Header">
-            <a href=@Url.Action("Index", "Home") class="logo" style="color: black; text-decoration:none;font-size:50px; font-family:'Volkhov,serif';font-weight:300">PXT</a>
-            <nav class="navbar">
-                <a href=@Url.Action("Index", "Home") style="color: black; text-decoration:none;font-size:20px">Home</a>
-                <a href="#" style="color: black; text-decoration:none;font-size:20px">Shop</a>
-                <a href=@Url.Action("Search", "Home") style="color: black; text-decoration:none;font-size:20px">Search</a>
-            </nav>
-            <nav class="navbar2">
-                <a href="@Url.Action("Index", "Login")" style="color: black; text-decoration:none;font-size:20px">Sign in</a>
-                <a href="@Url.Action("RegisterUser", "Login")" style="color: black; text-decoration:none;font-size:20px">Sign up</a>
-            </nav>
+<body class="m-0">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-header">
+        <div class="container">
+            <a href="@Url.Action("Index", "Home")">
+                <div class="logo">
+                    <img src="~/Image/logo.jpg" class="logo" />
+                </div>
+            </a>
+            <form class="searchBox" method="get" action="@Url.Action("Search", "Home")">
+                <input type="text" class="searchBar" placeholder="Tìm kiếm..." name="query" />
+                <button type="submit" class="searchBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_1_2737)">
+                            <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="white" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_1_2737">
+                                <rect width="24" height="24" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </button>
+            </form>
+            <div class="d-flex flex-row gap-4">
+                <a href="@Url.Action("Index", "Home")">
+                    <div class="box-link">
+                        <img src="~/Image/svg/heart.svg" alt="favorite list" />
+                    </div>
+                </a>
+                <a href="@Url.Action("Index", "ShoppingCart")">
+                    <div class="box-link">
+                        <img src="~/Image/svg/cart.svg" alt="cart list" />
+                    </div>
+                </a>
+                <div class="position-relative">
+                    @if (Session["UserID"] != null)
+                    {
+                        <a class="profile-link" href="@Url.Action("Index", "Profile")">
+                            <img src="@Url.Content("/Image/profile.png")" alt="profile image" class="profile-img" />
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="profile-link" href="@Url.Action("Index", "Login")">
+                            <img src="@Url.Content("/Image/profile.png")" alt="profile image" class="profile-img" />
+                        </a>
+                    }
+                    <div class="d-flex flex-column gap-2 p-2 profile-popup">
+                        @if (Session["UserID"] != null)
+                        {
+                            <div>Hello, <b>@Session["NameCus"]</b>!</div>
+                            <hr style="margin: 0.3em 0;" />
+                            <a href="@Url.Action("Index", "Profile")">Thông tin khách hàng</a>
+                            <a href="@Url.Action("LogoutUser", "Login")">Đăng xuất</a>
+                        }
+                        else
+                        {
+                            <div>Hello, Anonymous user</div>
+                            <hr style="margin: 0.3em 0;" />
+                            <a href="@Url.Action("Index", "Login")">Đăng nhập</a>
+                            <a href="@Url.Action("RegisterUser", "Login")">Đăng ký</a>
+                        }
+                        <hr style="margin: 0.3em 0;" />
+                        <a href="@Url.Action("CheckOrder", "ShoppingCart")">Kiểm tra đơn hàng</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="container body-content">
-            @RenderBody()
-        </div>
-    </div>
+    </nav>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

@@ -1,5 +1,6 @@
 namespace codeweb.Models
 {
+    using anhemtoicodeweb.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
