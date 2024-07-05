@@ -21,8 +21,13 @@ namespace anhemtoicodeweb.Models
         public DateTime? DateOrder { get; set; }
 
         public int? IDCus { get; set; }
-
+        public int PhoneNumber { get; set; }
         public string AddressDelivery { get; set; }
+
+        public decimal TotalAmount { get; set; }
+        public decimal TotalMoney { get; set; }
+        public decimal TotalTax { get; set; }
+        public decimal TotalDiscount { get; set; }
 
         public virtual Customer Customer { get; set; }
 
@@ -30,3 +35,4 @@ namespace anhemtoicodeweb.Models
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }
+

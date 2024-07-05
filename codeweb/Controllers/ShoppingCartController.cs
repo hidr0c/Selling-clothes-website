@@ -126,7 +126,7 @@ namespace KetNoiDatabase.Controllers
                     {
                         IDOrder = _order.ID,
                         IDProduct = item._product.ProductID,
-                        UnitPrice = (double)item._product.Price,
+                        UnitPrice = (decimal)item._product.Price,/*(double)item._product.Price,*/
                         Quantity = item._quantity
                     };
                     database.OrderDetails.Add(_order_detail);

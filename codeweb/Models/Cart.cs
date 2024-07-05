@@ -13,7 +13,7 @@ namespace anhemtoicodeweb.Models
 
     public class Cart
     {
-        List<CartItem> items = new List<CartItem>();
+        private readonly List<CartItem> items = new List<CartItem>();
         public IEnumerable<CartItem> Items
         {
             get { return items; }
@@ -29,11 +29,13 @@ namespace anhemtoicodeweb.Models
                     _quantity = quantity,
                     _product = product
                 });
+                return;
             }
-            else
-            {
-                item._quantity += quantity;
-            }
+
+            var tempQ = quantity + item._quantity;
+            if (tempQ > product.InvQuantity)
+                tempQ = product.InvQuantity;
+            item._quantity = tempQ;
         }
 
         public int TotalQuantity()
@@ -44,7 +46,7 @@ namespace anhemtoicodeweb.Models
         public decimal TotalMoney()
         {
             var total = items.Sum(s => s._quantity * s._product.Price);
-            return (decimal)total;
+            return total;
         }
 
         public void UpdateQuantity(int id, int new_quantity)

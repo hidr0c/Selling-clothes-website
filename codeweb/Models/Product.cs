@@ -13,7 +13,14 @@ namespace anhemtoicodeweb.Models
         public Product()
         {
             OrderDetails = new HashSet<OrderDetail>();
+            NamePro = "None";
+            DecriptionPro = "None";
+
+            InvQuantity = 0;
             Price = 0;
+            Discount = 0;
+            Tax = 0;
+
             ImagePro = "~/Image/Product/CuonTuiRac.jpg";
         }
 
@@ -28,7 +35,9 @@ namespace anhemtoicodeweb.Models
         [StringLength(20)]
         public string IDCate { get; set; }
 
-        public decimal? Price { get; set; }
+        public decimal Price { get; set; }
+        public decimal Discount { get; set; }
+        public decimal Tax { get; set; }
 
         public string ImagePro { get; set; }
 
@@ -36,7 +45,7 @@ namespace anhemtoicodeweb.Models
         public string OldImagePro { get; set; }
 
         [NotMapped]
-        public HttpPostedFileBase UploadImage {  get; set; }
+        public HttpPostedFileBase UploadImage { get; set; }
 
         public virtual Category Category { get; set; }
 
