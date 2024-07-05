@@ -6,9 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using anhemtoicodeweb.Models;
+using codeweb.Models;
 
-namespace anhemtoicodeweb.Controllers
+namespace codeweb.Controllers
 {
     public class CustomersController : Controller
     {

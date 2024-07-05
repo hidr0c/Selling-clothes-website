@@ -1,4 +1,4 @@
-﻿using anhemtoicodeweb.Models;
+﻿using codeweb.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 
-namespace anhemtoicodeweb.Controllers
+namespace codeweb.Controllers
 {
     public class LoginController : Controller
     {

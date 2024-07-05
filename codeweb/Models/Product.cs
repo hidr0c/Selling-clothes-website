@@ -1,4 +1,4 @@
-namespace anhemtoicodeweb.Models
+namespace codeweb.Models
 {
     using System;
     using System.Collections.Generic;

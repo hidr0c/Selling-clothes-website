@@ -1,4 +1,4 @@
-﻿using anhemtoicodeweb.Models;
+﻿using codeweb.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,7 +9,7 @@ using System.Web.Management;
 using System.Web.Mvc;
 using System.Web.UI;
 
-namespace anhemtoicodeweb.Controllers
+namespace codeweb.Controllers
 {
     public class HomeController : Controller
     {

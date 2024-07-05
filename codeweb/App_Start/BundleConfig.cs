@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace anhemtoicodeweb
+namespace codeweb
 {
     public class BundleConfig
     {

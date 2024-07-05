@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace anhemtoicodeweb.Models
+namespace codeweb.Models
 {
     public class CartItem
     {
