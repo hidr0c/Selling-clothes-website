@@ -260,3 +260,17 @@ section {
     font-size: xx-large;
     color: red;
 }
+.shop-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 207px;
+    height: 56px;
+    text-align:center;
+
+}
