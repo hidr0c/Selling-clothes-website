@@ -138,7 +138,7 @@ namespace KetNoiDatabase.Controllers
 
                 database.SaveChanges();
                 cart.ClearCart();
-                return View("CheckOutSuccess", _order);
+                return View(_order);
             }
             catch
             {

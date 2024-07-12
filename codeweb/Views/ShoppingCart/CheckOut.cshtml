@@ -1,15 +1,14 @@
 ﻿@model codeweb.Models.Cart
-
 @{
-    ViewBag.Title = "ShowCart";
-    /*string placeholder_addr = (TempData["Address"] != null && (string)TempData["Address"] != "") ? "Bỏ trống nếu muốn dùng địa chỉ cũ" : "Nhập địa chỉ giao hàng";*/
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string placeholder_addr = (TempData["Address"] != null && (string)TempData["Address"] != "") ? "Bỏ trống nếu muốn dùng địa chỉ cũ" : "Nhập địa chỉ giao hàng";
     string TotalMoney = "";
     if (Model != null && Model.Items.Count() > 0)
     {
         TotalMoney = String.Format(": {0:#,#.##}đ", Model.TotalMoney());
     }
 }
-
 @section Styles {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="@Url.Content("~/Content/css/Index.css")" rel="stylesheet" type="text/css" />
@@ -89,7 +88,6 @@
 }
 
 <h2>Giỏ hàng của bạn@(TotalMoney)</h2>
-<a href="@Url.Action("Index", "Products")">&#8592 Tiếp tục mua hàng</a>
 @if (Model != null && Model.Items.Count() > 0)
 {
     <div class="container-wrap product" style="justify-content: center; gap: 12px">
@@ -107,36 +105,11 @@
                             <div class="product-name">@item._product.NamePro</div>
                         </a>
                     </div>
-                    @using (Html.BeginForm("UpdateCartQuantity", "ShoppingCart"))
-                    {
-                        <div style="padding-bottom: 5px">Số lượng</div>
-                        <input type="hidden" value="@item._product.ProductID" name="idPro" />
-                        <input class="quantity-input" type="number" min="0" max="@item._product.InvQuantity" value="@item._quantity" name="cartQuantity" />
-                        <input style="background-color: transparent; border: none" type="submit" value="✓" />
-                    }
                 </div>
             </div>
         }
     </div>
-    <div class="d-flex flex-column mt-5 align-items-center">
-        @if (Session["UserId"] != null)
-        {
-            using (Html.BeginForm("Checkout", "ShoppingCart", FormMethod.Post, new { style = "display: flex; gap: 10px;" }))
-            {
-                @*<input type="hidden" value="@Session["UserId"]" name="CodeCustomer" />
-                <input style="text-indent: 5px; border-radius: 6px; border: black 1px solid" type="text" name="AddressDelivery" placeholder="@placeholder_addr" title="@placeholder_addr" />*@
-                <input class="btn btn-success" type="submit" value="Đi đến thanh toán" />
-            }
-        }
-        else
-        {
-            <div>Bạn cần phải đăng nhập hoặc đăng ký trước khi thanh toán</div>
-            <div>
-                <a href="@Url.Action("Index","Login")" class="btn btn-success">Đăng nhập</a>
-                <a href="@Url.Action("RegisterUser","Login")" class="btn btn-success">Đăng ký</a>
-            </div>
-        }
-    </div>
+
 }
 else
 {
@@ -144,3 +117,5 @@ else
         Chưa có sản phầm nào trong giỏ hàng...
     </div>
 }
+<input type="hidden" value="@Session["UserId"]" name="CodeCustomer" />
+<input style="text-indent: 5px; border-radius: 6px; border: black 1px solid" type="text" name="AddressDelivery" placeholder="@placeholder_addr" title="@placeholder_addr" />
