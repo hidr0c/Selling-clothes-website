@@ -266,7 +266,6 @@
     <Content Include="Views\Brands\Create.cshtml" />
     <Content Include="Views\Brands\Edit.cshtml" />
     <Content Include="Views\Brands\Delete.cshtml" />
-    <Content Include="Views\ShoppingCart\CheckOut.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
