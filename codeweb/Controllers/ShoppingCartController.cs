@@ -115,6 +115,7 @@ namespace KetNoiDatabase.Controllers
                 }
 
                 OrderPro _order = new OrderPro(); //Bang Hoa Don San pham
+                CartItem _cartItem= new CartItem();
 
                 _order.DateOrder = DateTime.Now;
                 _order.AddressDelivery = form["AddressDelivery"];

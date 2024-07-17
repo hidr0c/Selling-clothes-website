@@ -1,13 +1,9 @@
-﻿@model codeweb.Models.Cart
+﻿@model IEnumerable<codeweb.Models.CartItem>
 @{
     ViewBag.Title = "CheckOut";
     Layout = "~/Views/Shared/_Layout.cshtml";
     string placeholder_addr = (TempData["Address"] != null && (string)TempData["Address"] != "") ? "Bỏ trống nếu muốn dùng địa chỉ cũ" : "Nhập địa chỉ giao hàng";
-    string TotalMoney = "";
-    if (Model != null && Model.Items.Count() > 0)
-    {
-        TotalMoney = String.Format(": {0:#,#.##}đ", Model.TotalMoney());
-    }
+    decimal total = 0;
 }
 @section Styles {
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -87,35 +83,48 @@
     </style>
 }
 
-<h2>Giỏ hàng của bạn@(TotalMoney)</h2>
-@if (Model != null && Model.Items.Count() > 0)
+<h2>Giỏ hàng của bạn</h2>
+@if (Model == null)
 {
-    <div class="container-wrap product" style="justify-content: center; gap: 12px">
-        @foreach (var item in Model.Items)
-        {
-            <div class="product-box">
-                <a href="/ShoppingCart/RemoveCart/@item._product.ProductID" class="no-select close">+</a>
-                <div class="position-relative product-image">
-                    <img src="@Url.Content(item._product.ImagePro)" />
-                </div>
-                <div class="product-content">
-                    <div class="main-content">
-                        <div class="product-price">@(String.Format("{0:#,#.##}", item._product.Price))đ</div>
-                        <a href="@Url.Action("Details", "Products", new { id = item._product.ProductID })" style="text-decoration: none">
-                            <div class="product-name">@item._product.NamePro</div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
-
+    <h2> không có sản phẩm</h2>
 }
 else
 {
-    <div class="empty-cart">
-        Chưa có sản phầm nào trong giỏ hàng...
-    </div>
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>Tên mặt hàng</th>
+            <th>Hãng</th>
+            <th>Số lượng</th>
+            <th>Giá tiền(đơn)</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            total += (decimal)item._product.Price * item._quantity;
+            <tr>
+                <td class="d-flex justify-content-center">
+                    <img width="24" height="24" src="@Url.Content(item._product.ImagePro)" />
+                </td>
+                <td>
+                    <a href="@Url.Action("Details", "Products", new { id = item._product.ProductID })">@item._product.NamePro</a>
+                </td>
+                <td>
+                    <a href="@Url.Action("Details", "Brands", new { id = item._product.Brand.Id })">
+                        @item._product.Brand.BrandName
+                    </a>
+                </td>
+                <td>
+                    @item._quantity
+                </td>
+                <td>
+                    @(String.Format("{0:#,#.##}", item._product.Price))đ
+                </td>
+                <td></td>
+            </tr>
+        }
+    </table>
+    <h2>Thành tiền: @(String.Format("{0:#,#.##}", total))đ</h2>
 }
 <input type="hidden" value="@Session["UserId"]" name="CodeCustomer" />
 <input style="text-indent: 5px; border-radius: 6px; border: black 1px solid" type="text" name="AddressDelivery" placeholder="@placeholder_addr" title="@placeholder_addr" />
