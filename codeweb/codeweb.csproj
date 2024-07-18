@@ -181,6 +181,16 @@
     <Content Include="img\momo.png" />
     <Content Include="img\profile.png" />
     <Content Include="img\svg\cart.svg" />
+    <Content Include="img\svg\cart1.png" />
+    <Content Include="img\svg\cart10.png" />
+    <Content Include="img\svg\cart2.png" />
+    <Content Include="img\svg\cart3.png" />
+    <Content Include="img\svg\cart4.png" />
+    <Content Include="img\svg\cart5.png" />
+    <Content Include="img\svg\cart6.png" />
+    <Content Include="img\svg\cart7.png" />
+    <Content Include="img\svg\cart8.png" />
+    <Content Include="img\svg\cart9.png" />
     <Content Include="img\svg\heart.svg" />
     <Content Include="img\svg\pencil.svg" />
     <Content Include="img\svg\person.svg" />
