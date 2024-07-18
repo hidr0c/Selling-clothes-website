@@ -1,0 +1,112 @@
+﻿@model codeweb.Models.Customer
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .p {
+        font-size: large;
+        margin: inherit;
+    }
+
+    button {
+        border-radius: 7px;
+    }
+
+    .edit,
+    .dropbtn {
+        background-color: #4E6C50;
+        color: white;
+        font-size: 16px;
+        border: none;
+        padding: 10px;
+        padding-bottom: 10px;
+        border-radius: 7px;
+        max-height: 41px;
+    }
+
+    .dropbtn {
+        margin-bottom: 4px
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 165px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        border-radius: 7px;
+        overflow: hidden;
+    }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+            .dropdown-content a:hover {
+                background-color: #ddd;
+            }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .profile-info p {
+        font-size: 24px;
+    }
+</style>
+<h1 class="py-3">Admin Panel</h1>
+<h2>Thống kê</h2>
+
+<p>Tổng số tiền bán được: @ViewBag.TotalSales</p>
+<p>Tổng số hóa đơn: @ViewBag.TotalOrders</p>
+<p>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#productsCollapse" aria-expanded="false" aria-controls="productsCollapse">
+        Products
+    </button>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#BrandCollapse" aria-expanded="false" aria-controls="BrandCollapse">
+        Brand
+    </button>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#customersCollapse" aria-expanded="false" aria-controls="customersCollapse">
+        Customers
+    </button>
+    @*<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#ordersCollapse" aria-expanded="false" aria-controls="ordersCollapse">
+            Orders
+        </button>*@
+</p>
+<div class="px-3 collapse" id="productsCollapse">
+    @{
+        Html.RenderAction("Index", "Products");
+    }
+    <hr />
+</div>
+<div class="px-3 collapse" id="BrandCollapse">
+    @{
+        Html.RenderAction("Index", "Brands");
+    }
+    <hr />
+</div>
+<div class="px-3 collapse" id="customersCollapse">
+    @{
+        Html.RenderAction("Index", "Customers");
+    }
+    <hr />
+</div>
+@*<div class="px-3 collapse" id="ordersCollapse">
+        @{
+            Html.RenderAction("Index", "OrderPro");
+        }
+        <hr />
+    </div>
+*@
+

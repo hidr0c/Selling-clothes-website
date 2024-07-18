@@ -16,7 +16,7 @@ namespace codeweb.Controllers
         private Model1 database = new Model1();
         public ActionResult Index()
         {
-            IEnumerable<Product> productList = database.Products.OrderByDescending(x => x.NamePro).ToList();
+            IEnumerable<Product> productList = database.OrderPro.OrderByDescending(x => x.NamePro).ToList();
             IEnumerable<Brand> BrandsList = database.Brands.OrderByDescending(x => x.BrandName).ToList();
             var tuple = new Tuple<IEnumerable<Product>, IEnumerable<Brand>>(productList, BrandsList);
             return View(tuple);
@@ -53,7 +53,7 @@ namespace codeweb.Controllers
             List<Product> searchQuery = new List<Product>();
 
             string norm_name;
-            foreach (var item in database.Products)
+            foreach (var item in database.OrderPro)
             {
                 norm_name = NormalizeDiacriticalCharacters(item.NamePro);
                 if (norm_name.Contains(query))

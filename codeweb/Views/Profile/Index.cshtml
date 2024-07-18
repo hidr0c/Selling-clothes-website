@@ -67,41 +67,14 @@
 </style>
 
 <h2>Profile</h2>
-@if (Session["IsAdmin"] is true)
-{
-    <h2 class="py-3">Admin Panel</h2>
-    <p>
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#productsCollapse" aria-expanded="false" aria-controls="productsCollapse">
-            Products
-        </button>
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#BrandCollapse" aria-expanded="false" aria-controls="BrandCollapse">
-            Brand
-        </button>
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#customersCollapse" aria-expanded="false" aria-controls="customersCollapse">
-            Customers
-        </button>
-    </p>
-    <div class="px-3 collapse" id="productsCollapse">
-        @{
-            Html.RenderAction("Index", "Products");
-        }
-        <hr />
-    </div>
-    <div class="px-3 collapse" id="BrandCollapse">
-        @{
-            Html.RenderAction("Index", "Brands");
-        }
-        <hr />
-    </div>
-    <div class="px-3 collapse" id="customersCollapse">
-        @{
-            Html.RenderAction("Index", "Customers");
-        }
-        <hr />
-    </div>
-}
+<div class="container"; style="display: flex; padding-bottom: 10px">
+    @if (Session["IsAdmin"] is true)
+    {
+        <a href="@Url.Action("Index", "AdminPanel")" class="no-select edit">Admin panel</a>
+    }
+</div>
 
-<hr />
+
 
 <div class="profile-info">
     <p>Tên người dùng: <b>@Model.NameCus</b></p>

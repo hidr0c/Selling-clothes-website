@@ -25,7 +25,7 @@ namespace codeweb.Controllers
         public PartialViewResult Products()
         {
             var products = new List<Product>();
-            return PartialView(database.Products.ToList());
+            return PartialView(database.OrderPro.ToList());
         }
 
         public ActionResult EditProfile()

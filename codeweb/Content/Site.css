@@ -64,7 +64,7 @@ a {
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-    background: #ECF4FF;
+   /* background: #ECF4FF;*/
 }
 
 .searchBox {
@@ -161,7 +161,7 @@ footer {
     width: max-content;
     height: max-content;
     min-width: 180px;
-    background: #ECF4FF;
+    background: #EEF9AF;
     z-index: 5;
     border-radius: 8px;
     border: #4E6C50 2px solid;

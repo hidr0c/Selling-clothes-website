@@ -18,6 +18,7 @@ namespace codeweb.Models
         public decimal Total { get; set; }
         public decimal Discount { get; set; }
         public decimal Tax { get; set; }
+        public string Status { get; set; }
 
         public virtual OrderPro OrderPro { get; set; }
 

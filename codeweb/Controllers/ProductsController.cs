@@ -25,17 +25,17 @@ namespace codeweb.Controllers
         {
             if (ControllerContext.IsChildAction)
             {
-                return PartialView(db.Products.ToList());
+                return PartialView(db.OrderPro.ToList());
             }
             ViewBag.Layout = "~/Views/Shared/_Layout.cshtml";
-            int maxPage = Math.Max(1, db.Products.Count() / 10);
+            int maxPage = Math.Max(1, db.OrderPro.Count() / 10);
             if (page > maxPage)
             {
                 page = maxPage;
             }
             ViewBag.MaxPage = maxPage;
             ViewBag.CurrentPage = page;
-            return View("UserIndex", db.Products.OrderBy(x => x.NamePro).Skip((page - 1) * 15).Take(15).ToList());
+            return View("UserIndex", db.OrderPro.OrderBy(x => x.NamePro).Skip((page - 1) * 15).Take(15).ToList());
         }
 
         public ActionResult Details(int? id)
@@ -44,7 +44,7 @@ namespace codeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            Product product = db.OrderPro.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -59,7 +59,7 @@ namespace codeweb.Controllers
             {
                 return RedirectToAction("Index");
             }
-            ViewBag.IDBrand = new SelectList(db.Brands, "IDBrand", "BrandName");
+            ViewBag.IDBrand = new SelectList(db.Brands, "IDBrand", "BrandName", "InvQuantity");
             return View(new Product());
         }
 
@@ -92,7 +92,7 @@ namespace codeweb.Controllers
 
             if (ModelState.IsValid)
             {
-                db.Products.Add(product);
+                db.OrderPro.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -113,7 +113,7 @@ namespace codeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            Product product = db.OrderPro.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -168,7 +168,7 @@ namespace codeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            Product product = db.OrderPro.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -181,8 +181,8 @@ namespace codeweb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Products.Find(id);
-            db.Products.Remove(product);
+            Product product = db.OrderPro.Find(id);
+            db.OrderPro.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

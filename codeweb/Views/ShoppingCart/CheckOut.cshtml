@@ -1,8 +1,51 @@
-﻿
+﻿@model codeweb.Models.Cart
+
 @{
-    ViewBag.Title = "CheckOutNext";
+    ViewBag.Title = "CheckOut";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CheckOutNext</h2>
+<h2>Checkout</h2>
 
+@if (Model != null && Model.Items.Count() > 0)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>@item._product.NamePro</td>
+                    <td>@item._quantity</td>
+                    <td>@String.Format("{0:#,#.##}", item._product.Price)đ</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>Total: @String.Format("{0:#,#.##}", Model.TotalMoney())đ</h3>
+
+    using (Html.BeginForm("CheckOutNext", "ShoppingCart", FormMethod.Post))
+    {
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required />
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required />
+
+        <input type="submit" value="Proceed to Checkout" />
+    }
+}
+else
+{
+    <p>Your cart is empty.</p>
+}

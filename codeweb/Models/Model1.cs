@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Drawing.Drawing2D;
@@ -13,12 +14,13 @@ namespace codeweb.Models
         {
         }
 
+        public static IEnumerable<object> Cart { get; internal set; }
         public virtual DbSet<AdminUser> AdminUsers { get; set; }
 /*        public virtual DbSet<Brand> Brands { get; set; }*/
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<OrderPro> OrderProes { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Product> OrderPro { get; set; }
         public virtual DbSet<Brand> Brands { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
