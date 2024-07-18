@@ -77,7 +77,7 @@ namespace KetNoiDatabase.Controllers
             return RedirectToAction("Index", "ShoppingCart");
         }
 
-        public ActionResult CheckOut(FormCollection form)
+        public ActionResult CheckOutNext(FormCollection form)
         {
             try
             {
@@ -140,12 +140,17 @@ namespace KetNoiDatabase.Controllers
                 database.SaveChanges();
                 cart.ClearCart();
                 return View("CheckOutSuccess", _order);
-                return View(_order);
             }
             catch
             {
                 return RedirectToAction("Index");
             }
+        }
+
+        public ActionResult CheckOut(FormCollection form)
+        {
+           /* return View("CheckOutNext", form);*/
+            return View();
         }
 
         public ActionResult BuyNow(int id)
