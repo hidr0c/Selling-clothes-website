@@ -67,46 +67,64 @@
 </style>
 <h1 class="py-3">Admin Panel</h1>
 <h2>Thống kê</h2>
-
-<p>Tổng số tiền bán được: @ViewBag.TotalSales</p>
-<p>Tổng số hóa đơn: @ViewBag.TotalOrders</p>
-<p>
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#productsCollapse" aria-expanded="false" aria-controls="productsCollapse">
-        Products
-    </button>
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#BrandCollapse" aria-expanded="false" aria-controls="BrandCollapse">
-        Brand
-    </button>
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#customersCollapse" aria-expanded="false" aria-controls="customersCollapse">
-        Customers
-    </button>
-    @*<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#ordersCollapse" aria-expanded="false" aria-controls="ordersCollapse">
-            Orders
-        </button>*@
-</p>
-<div class="px-3 collapse" id="productsCollapse">
-    @{
-        Html.RenderAction("Index", "Products");
-    }
-    <hr />
-</div>
-<div class="px-3 collapse" id="BrandCollapse">
-    @{
-        Html.RenderAction("Index", "Brands");
-    }
-    <hr />
-</div>
-<div class="px-3 collapse" id="customersCollapse">
-    @{
-        Html.RenderAction("Index", "Customers");
-    }
-    <hr />
-</div>
-@*<div class="px-3 collapse" id="ordersCollapse">
-        @{
-            Html.RenderAction("Index", "OrderPro");
-        }
-        <hr />
+<div class="card-deck mb-3 text-center">
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Tổng doanh thu</h4>
+        </div>
+        <div class="card-body">
+            <h1 class="card-title pricing-card-title">@ViewBag.TotalSales <small class="text-muted">đ</small></h1>
+        </div>
     </div>
-*@
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Tổng đơn hàng</h4>
+        </div>
+        <div class="card-body">
+            <h1 class="card-title pricing-card-title">@ViewBag.TotalOrders <small class="text-muted"></small></h1>
+        </div>
+    </div>
+</div>
+
+    @*    <p>Tổng số tiền bán được: @ViewBag.TotalSales</p>
+        <p>Tổng số hóa đơn: @ViewBag.TotalOrders</p>*@
+        <p>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#productsCollapse" aria-expanded="false" aria-controls="productsCollapse">
+                Products
+            </button>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#BrandCollapse" aria-expanded="false" aria-controls="BrandCollapse">
+                Brand
+            </button>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#customersCollapse" aria-expanded="false" aria-controls="customersCollapse">
+                Customers
+            </button>
+            @*<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#ordersCollapse" aria-expanded="false" aria-controls="ordersCollapse">
+                    Orders
+                </button>*@
+        </p>
+        <div class="px-3 collapse" id="productsCollapse">
+            @{
+                Html.RenderAction("Index", "Products");
+            }
+            <hr />
+        </div>
+        <div class="px-3 collapse" id="BrandCollapse">
+            @{
+                Html.RenderAction("Index", "Brands");
+            }
+            <hr />
+        </div>
+        <div class="px-3 collapse" id="customersCollapse">
+            @{
+                Html.RenderAction("Index", "Customers");
+            }
+            <hr />
+        </div>
+        @*<div class="px-3 collapse" id="ordersCollapse">
+                @{
+                    Html.RenderAction("Index", "OrderPro");
+                }
+                <hr />
+            </div>
+        *@
 
