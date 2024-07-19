@@ -174,6 +174,16 @@
     <Content Include="img\banner1.png" />
     <Content Include="img\banner2.jpg" />
     <Content Include="img\banner3.png" />
+    <Content Include="img\clothes\diordress.png" />
+    <Content Include="img\clothes\diordress2.png" />
+    <Content Include="img\clothes\gangtayBacchi.png" />
+    <Content Include="img\clothes\gangtayMM.png" />
+    <Content Include="img\clothes\gucciS1.png" />
+    <Content Include="img\clothes\gucciS2.png" />
+    <Content Include="img\clothes\hoodiePXT.png" />
+    <Content Include="img\clothes\hoodiePXT2.png" />
+    <Content Include="img\clothes\jeanJuno.png" />
+    <Content Include="img\clothes\jeanOldSalor.png" />
     <Content Include="img\EgBTBCBUwAM0Tmn2_waifu2x_2560x1600_3n_png.png" />
     <Content Include="img\image 6.png" />
     <Content Include="img\image 7.png" />
