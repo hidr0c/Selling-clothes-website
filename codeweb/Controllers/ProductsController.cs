@@ -77,7 +77,7 @@ namespace codeweb.Controllers
 
             if (product.ImagePro == null)
             {
-                product.ImagePro = "~/Image/Product/CuonTuiRac.jpg";
+                product.ImagePro = "~/img/image7.png";
             }
 
             if (product.InvQuantity == 0)
