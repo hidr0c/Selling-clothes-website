@@ -3,8 +3,8 @@
 @{
     ViewBag.Title = "ShowCart";
     string placeholder_addr = (TempData["Address"] != null && (string)TempData["Address"] != "") ? "Bỏ trống nếu muốn dùng địa chỉ cũ" : "Nhập địa chỉ giao hàng";
+    string placeholder_phone = (TempData["PhoneNumber"] != null && (int)TempData["PhoneNumber"] != 0) ? "Bỏ trống nếu muốn dùng số điện thoại cũ" : "Nhập Số điện thoại";
     string TotalMoney = "";
-    decimal VAT = 0;
     if (Model != null && Model.Items.Count() > 0)
     {
         TotalMoney = String.Format(": {0:#,#.##}đ", Model.TotalMoney());
@@ -125,6 +125,9 @@
         {
             using (Html.BeginForm("CheckOut", "ShoppingCart", FormMethod.Post, new { style = "display: flex; gap: 10px;" }))
             {
+                <input type="hidden" value="@Session["UserId"]" name="CodeCustomer" />
+                <input style="text-indent: 5px; border-radius: 6px; border: black 1px solid" type="text" name="AddressDelivery" placeholder="@placeholder_addr" title="@placeholder_addr" />
+                <input style="text-indent: 5px; border-radius: 6px; border: black 1px solid" type="number" name="PhoneNumber" placeholder="@placeholder_phone" title="@placeholder_phone" />
                 <input class="btn btn-success" type="submit" value="Đi đến thanh toán" />
             }
         }

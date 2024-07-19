@@ -21,7 +21,7 @@ namespace codeweb.Models
             Discount = 0;
             Tax = 0;
 
-            ImagePro = "~/Image/Product/CuonTuiRac.jpg";
+            ImagePro = "~/img/image 7.png";
         }
 
         public int ProductID { get; set; }

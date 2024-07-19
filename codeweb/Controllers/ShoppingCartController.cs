@@ -79,7 +79,7 @@ namespace KetNoiDatabase.Controllers
             return RedirectToAction("Index", "ShoppingCart");
         }
 
-        public ActionResult CheckOutNext(FormCollection form)
+        public ActionResult CheckOut(FormCollection form)
         {
             try
             {
@@ -107,6 +107,7 @@ namespace KetNoiDatabase.Controllers
                 if (form["CodeCustomer"] == null)
                 {
                     form["CodeCustomer"] = _user.IDCus.ToString();
+
                 }
 
                 if (_user.AddressName == null)
@@ -129,7 +130,7 @@ namespace KetNoiDatabase.Controllers
                 foreach (var item in cart.Items)
                 {
                     var prodTotal = (item._quantity * item._product.Price);
-                    var tax = prodTotal * 0.1m; // Calculate VAT for this product
+                    var tax = prodTotal * item._product.Tax;
                     var discount = item._product.Discount;
                     if (discount >= 0 && discount <= 1)
                     {
@@ -138,19 +139,20 @@ namespace KetNoiDatabase.Controllers
 
                     OrderDetail _order_detail = new OrderDetail
                     {
-                        IDOrder = _order.ID,
                         IDProduct = item._product.ProductID,
-                        UnitPrice = (decimal)item._product.Price,
+                        IDOrder = _order.ID,
+
                         Quantity = item._quantity,
+                        UnitPrice = item._product.Price,
                         Total = prodTotal - discount + tax,
-                        Discount = discount,
-                        Tax = tax,
+                        Discount = item._product.Discount,
+                        Tax = item._product.Tax,
                     };
 
                     totalQuantity += item._quantity;
-                    totalDiscount += discount;
-                    totalPrice += prodTotal;
-                    totalTax += tax;
+                    totalDiscount += _order_detail.Discount;
+                    totalPrice += _order_detail.Total;
+                    totalTax += _order_detail.Tax;
                     database.OrderDetails.Add(_order_detail);
 
                     var _prod = database.OrderPro.Find(item._product.ProductID);
@@ -174,22 +176,6 @@ namespace KetNoiDatabase.Controllers
             }
         }
 
-    
-
-    public ActionResult CheckOut(FormCollection form)
-        {
-            if (Request.HttpMethod == "POST")
-            {
-                return RedirectToAction("CheckOutNext", new RouteValueDictionary(form.AllKeys.ToDictionary(k => k, k => (object)form[k])));
-            }
-            else
-            {
-                // Display the checkout form
-                return View();
-            }
-        }
-
-
         public ActionResult BuyNow(int id)
         {
             Cart cart = GetCart();
@@ -206,6 +192,7 @@ namespace KetNoiDatabase.Controllers
                 var _user = database.Customers.FirstOrDefault(x => x.IDCus == _userId);
                 FormCollection form = new FormCollection();
                 form["AddressDelivery"] = _user.AddressName;
+                form["PhoneNumber"] = _user.PhoneCus;
                 form["CodeCustomer"] = _user.IDCus.ToString();
                 return RedirectToAction("CheckOut", "ShoppingCart", form);
             }
@@ -242,14 +229,6 @@ namespace KetNoiDatabase.Controllers
             }
             return View(cartItems);
         }
-        public ActionResult Order()
-        {
-            var Brand = db.Brands.ToList();
-            if (ControllerContext.IsChildAction)
-            {
-                return PartialView(Brand.ToList());
-            }
-            return RedirectToAction("Details", new { id = "1" });
-        }
     }
+
 }
