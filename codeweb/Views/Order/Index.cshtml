@@ -10,10 +10,9 @@
 @if (Session["IsAdmin"] is true)
 {
     <p>
-        @Html.ActionLink("Create New", "Create", "", new { @class = "btn btn-success" })
+        @Html.ActionLink("Tạo mới", "Create", "", new { @class = "btn btn-success" })
     </p>
 }
-
 <table class="table">
     <tr>
         <th>
@@ -35,13 +34,22 @@
     {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.IDCus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameCus)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateOrder)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.AddressDelivery)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)

@@ -25,6 +25,22 @@
             padding: 5px;
         }
     </style>
+    @section JavaScript{
+        <script>
+            $.ajax({
+                url: '/cart/add',
+                type: 'POST',
+                data: {
+                    productId: id
+                },
+                success: function (cartCount) {
+                    $('#cart-icon').attr('src', '~/img/svg/cart' + cartCount + '.svg');
+                }
+            });
+
+        </script>
+    }
+
 </head>
 <body class="m-0">
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-header">

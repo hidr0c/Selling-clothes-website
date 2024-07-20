@@ -13,6 +13,10 @@ namespace codeweb.Models
         public int? IDProduct { get; set; }
         public int? IDOrder { get; set; }
 
+        public string CusName { get; set; }
+        public int PhoneNumber { get; set; }
+        public string AddressDelivery { get; set; }
+
         public int Quantity { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal Total { get; set; }

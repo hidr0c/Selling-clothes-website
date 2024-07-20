@@ -194,6 +194,7 @@ namespace KetNoiDatabase.Controllers
                 form["AddressDelivery"] = _user.AddressName;
                 form["PhoneNumber"] = _user.PhoneCus;
                 form["CodeCustomer"] = _user.IDCus.ToString();
+                form["NameCus"] = _user.NameCus;
                 return RedirectToAction("CheckOut", "ShoppingCart", form);
             }
             TempData["Error"] = "Sản phẩm không tồn tại hoặc đã bị xóa";

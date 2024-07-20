@@ -86,45 +86,46 @@
     </div>
 </div>
 
-    @*    <p>Tổng số tiền bán được: @ViewBag.TotalSales</p>
-        <p>Tổng số hóa đơn: @ViewBag.TotalOrders</p>*@
-        <p>
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#productsCollapse" aria-expanded="false" aria-controls="productsCollapse">
-                Products
-            </button>
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#BrandCollapse" aria-expanded="false" aria-controls="BrandCollapse">
-                Brand
-            </button>
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#customersCollapse" aria-expanded="false" aria-controls="customersCollapse">
-                Customers
-            </button>
-            @*<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#ordersCollapse" aria-expanded="false" aria-controls="ordersCollapse">
-                    Orders
-                </button>*@
+@*    <p>Tổng số tiền bán được: @ViewBag.TotalSales</p>
+    <p>Tổng số hóa đơn: @ViewBag.TotalOrders</p>*@
+<p>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#productsCollapse" aria-expanded="false" aria-controls="productsCollapse">
+        Products
+    </button>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#BrandCollapse" aria-expanded="false" aria-controls="BrandCollapse">
+        Brand
+    </button>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#customersCollapse" aria-expanded="false" aria-controls="customersCollapse">
+        Customers
+    </button>
+
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#ordersCollapse" aria-expanded="false" aria-controls="ordersCollapse">
+        Orders
+    </button>
+
         </p>
-        <div class="px-3 collapse" id="productsCollapse">
-            @{
-                Html.RenderAction("Index", "Products");
-            }
-            <hr />
-        </div>
-        <div class="px-3 collapse" id="BrandCollapse">
-            @{
-                Html.RenderAction("Index", "Brands");
-            }
-            <hr />
-        </div>
-        <div class="px-3 collapse" id="customersCollapse">
-            @{
-                Html.RenderAction("Index", "Customers");
-            }
-            <hr />
-        </div>
-        @*<div class="px-3 collapse" id="ordersCollapse">
-                @{
-                    Html.RenderAction("Index", "OrderPro");
-                }
-                <hr />
-            </div>
-        *@
+<div class="px-3 collapse" id="productsCollapse">
+    @{
+        Html.RenderAction("Index", "Products");
+    }
+    <hr />
+</div>
+<div class="px-3 collapse" id="BrandCollapse">
+    @{
+        Html.RenderAction("Index", "Brands");
+    }
+    <hr />
+</div>
+<div class="px-3 collapse" id="customersCollapse">
+    @{
+        Html.RenderAction("Index", "Customers");
+    }
+    <hr />
+</div>
+<div class="px-3 collapse" id="ordersCollapse">
+    @{
+        Html.RenderAction("Index", "Order");
+    }
+    <hr />
+</div>
 

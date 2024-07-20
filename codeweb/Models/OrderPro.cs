@@ -21,6 +21,7 @@ namespace codeweb.Models
         [Column(TypeName = "date")]
         public DateTime? DateOrder { get; set; }
 
+        public string CusName { get; set; }
         public int? IDCus { get; set; }
         public int PhoneNumber { get; set; }
         public string AddressDelivery { get; set; }
