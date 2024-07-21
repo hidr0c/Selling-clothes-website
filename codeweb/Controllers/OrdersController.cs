@@ -43,7 +43,7 @@ namespace codeweb.Controllers
 
         // POST: Order/Edit/5
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "NameCus,PhoneNumber,AddressDelivery,orderStatus")] OrderPro orderPro)
+        public ActionResult Edit([Bind(Include = "NameCus,PhoneNumber,AddressDelivery,Status")] OrderPro orderPro)
         {
            
                 if (Session["IsAdmin"] == null || Session["IsAdmin"] is false)
@@ -58,34 +58,35 @@ namespace codeweb.Controllers
                     return RedirectToAction("Index");
                 }
                 return View(orderPro);
-
-            /* if (Session["IsAdmin"] == null || Session["IsAdmin"] is false)
-             {
-                 return RedirectToAction("Index", "Home");
-             }
-
-             if (id == null)
-             {
-                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-             }
-             OrderPro orderPro = db.OrderProes.Find(id);
-             if (orderPro == null)
-             {
-                 return HttpNotFound();
-             }
-
-             // Cập nhật orderPro với dữ liệu mới từ form
-             orderPro.Status = collection["orderStatus"];
-             orderPro.AddressDelivery = collection["AddressDelivery"];
-             orderPro.PhoneNumber = int.Parse(collection["PhoneNumber"]);
-             orderPro.NameCus = collection["NameCus"];
-
-             // Lưu thay đổi vào cơ sở dữ liệu
-             db.Entry(orderPro).State = EntityState.Modified;
-             db.SaveChanges();
-
-             return RedirectToAction("Index");*/
         }
+
+        /* if (Session["IsAdmin"] == null || Session["IsAdmin"] is false)
+         {
+             return RedirectToAction("Index", "Home");
+         }
+
+         if (id == null)
+         {
+             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+         }
+         OrderPro orderPro = db.OrderProes.Find(id);
+         if (orderPro == null)
+         {
+             return HttpNotFound();
+         }
+
+         // Cập nhật orderPro với dữ liệu mới từ form
+         orderPro.Status = collection["orderStatus"];
+         orderPro.AddressDelivery = collection["AddressDelivery"];
+         orderPro.PhoneNumber = int.Parse(collection["PhoneNumber"]);
+         orderPro.NameCus = collection["NameCus"];
+
+         // Lưu thay đổi vào cơ sở dữ liệu
+         db.Entry(orderPro).State = EntityState.Modified;
+         db.SaveChanges();
+
+         return RedirectToAction("Index");*/
+
 
 
         // GET: Order/Delete/5

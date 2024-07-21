@@ -49,7 +49,7 @@
 
         <div class="form-group">
             <label for="orderStatus">Order Status</label>
-            <select id="orderStatus" name="orderStatus">
+            <select id="orderStatus" name="Status">
                 <option value="waitingForConfirmation" @(Model.Status == "waitingForConfirmation" ? "selected" : "")>Waiting for confirmation</option>
                 <option value="onDelivery" @(Model.Status == "onDelivery" ? "selected" : "")>On delivery</option>
                 <option value="completed" @(Model.Status == "completed" ? "selected" : "")>Completed</option>
