@@ -14,7 +14,30 @@ namespace codeweb.Controllers
         // GET: AdminPanel
         public ActionResult Index(int? month)
         {
-            // Get the total sales amount
+            // Get the total number of orders
+            int totalOrders = database.OrderProes.Count();
+
+            // Count orders by status
+            int waitingForConfirmationOrders = database.OrderProes.Count(o => o.Status == "Waiting for confirmation");
+            int onDeliveryOrders = database.OrderProes.Count(o => o.Status == "On delivery");
+            int completedOrders = database.OrderProes.Count(o => o.Status == "Completed");
+
+            // Get the total sales amount from completed orders
+            decimal totalSales = database.OrderProes
+                .Where(o => o.Status == "completed")
+                .Select(o => (decimal?)o.TotalMoney)
+                .DefaultIfEmpty(0M)
+                .Sum()
+                .GetValueOrDefault();
+
+            ViewBag.TotalSales = totalSales;
+            ViewBag.TotalOrders = totalOrders;
+            ViewBag.WaitingForConfirmationOrders = waitingForConfirmationOrders;
+            ViewBag.OnDeliveryOrders = onDeliveryOrders;
+            ViewBag.CompletedOrders = completedOrders;
+
+            return View();
+            /*// Get the total sales amount
             decimal totalSales = database.OrderProes.Select(o => (decimal?)o.TotalMoney).DefaultIfEmpty(0M).Sum().Value;
 
             // Get the total number of orders
@@ -23,7 +46,25 @@ namespace codeweb.Controllers
             ViewBag.TotalSales = totalSales;
             ViewBag.TotalOrders = totalOrders;
 
+            return View();*/
+        }
+        public ActionResult ProductsManagement()
+        {
             return View();
+        }
+        public ActionResult BrandsManagement()
+        {
+            return View();
+           
+        }
+        public ActionResult CustomersManagement()
+        {
+            return View();
+        }
+        public ActionResult OrdersManagement()
+        {
+            return View();
+
         }
     }
 }

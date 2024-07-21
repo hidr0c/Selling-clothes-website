@@ -16,39 +16,41 @@
 }
 else
 {
-    <table class="table">
+<table class="table">
+    <tr>
+        <th></th>
+        <th>Tên mặt hàng</th>
+        <th>Hãng</th>
+        <th>Số lượng</th>
+        <th>Giá tiền(đơn)</th>
+        <th>Thao tác</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        total += (decimal)item._product.Price * item._quantity;
         <tr>
-            <th></th>
-            <th>Tên mặt hàng</th>
-            <th>Hãng</th>
-            <th>Số lượng</th>
-            <th>Giá tiền(đơn)</th>
-            <th></th>
-        </tr>
-        @foreach (var item in Model)
-        {
-            total += (decimal)item._product.Price * item._quantity;
-            <tr>
-                <td class="d-flex justify-content-center">
-                    <img width="24" height="24" src="@Url.Content(item._product.ImagePro)" />
+            <td class="d-flex justify-content-center">
+                <img width="24" height="24" src="@Url.Content(item._product.ImagePro)" />
+            </td>
+            <td>
+                <a href="@Url.Action("Details", "Products", new { id = item._product.ProductID })">@item._product.NamePro</a>
+            </td>
+            <td>
+                <a href="@Url.Action("Details", "Brands", new { id = item._product.Brand.Id })">
+                    @item._product.Brand.BrandName
+                </a>
+            </td>
+            <td>
+                @item._quantity
+            </td>
+            <td>
+                @(String.Format("{0:#,#.##}", item._product.Price))đ
+            </td>
+            <td>
                 </td>
-                <td>
-                    <a href="@Url.Action("Details", "Products", new { id = item._product.ProductID })">@item._product.NamePro</a>
-                </td>
-                <td>
-                    <a href="@Url.Action("Details", "Brands", new { id = item._product.Brand.Id })">
-                        @item._product.Brand.BrandName
-                    </a>
-                </td>
-                <td>
-                    @item._quantity
-                </td>
-                <td>
-                    @(String.Format("{0:#,#.##}", item._product.Price))đ
-                </td>
-                <td></td>
             </tr>
-        }
+    }
+
     </table>
     <h2>Thành tiền: @(String.Format("{0:#,#.##}", total))đ</h2>
 }

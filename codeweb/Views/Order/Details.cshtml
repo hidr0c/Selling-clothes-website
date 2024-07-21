@@ -1,0 +1,41 @@
+﻿@model codeweb.Models.OrderPro
+
+<h2>Order Details</h2>
+
+<p>Order ID: @Model.ID</p>
+<p>Customer Name: @Model.NameCus</p>
+<p>Phone Number: @Model.PhoneNumber</p>
+<p>Address: @Model.AddressDelivery</p>
+
+<h3>Products in this order:</h3>
+<table class="table">
+    <tr>
+        <th></th>
+        <th>Tên mặt hàng</th>
+        <th>Hãng</th>
+        <th>Số lượng</th>
+        <th>Giá tiền(đơn)</th>
+    </tr>
+    @foreach (var item in Model.OrderDetails)
+    {
+        <tr>
+            <td class="d-flex justify-content-center">
+                <img width="24" height="24" src="@Url.Content(item.Product.ImagePro)" />
+            </td>
+            <td>
+                <a href="@Url.Action("Details", "Products", new { id = item.Product.ProductID })">@item.Product.NamePro</a>
+            </td>
+            <td>
+                <a href="@Url.Action("Details", "Brands", new { id = item.Product.Brand.Id })">
+                    @item.Product.Brand.BrandName
+                </a>
+            </td>
+            <td>
+                @item.Quantity
+            </td>
+            <td>
+                @(String.Format("{0:#,#.##}", item.Product.Price))đ
+            </td>
+        </tr>
+    }
+</table>

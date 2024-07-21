@@ -64,68 +64,108 @@
     .profile-info p {
         font-size: 24px;
     }
+
+    .edit {
+        margin-right: 10px;
+    }
 </style>
 <h1 class="py-3">Admin Panel</h1>
-<h2>Thống kê</h2>
+<h2>Managements</h2>
+<div class="container" style="display: flex; padding-bottom: 10px; margin-right: 20px">
+    <a href="@Url.Action("ProductsManagement", "AdminPanel")" class="no-select edit">Products management</a>
+    <a href="@Url.Action("BrandsManagement", "AdminPanel")" class="no-select edit">Brands management</a>
+    <a href="@Url.Action("CustomersManagement", "AdminPanel")" class="no-select edit">Customers management</a>
+    <a href="@Url.Action("OrdersManagement", "AdminPanel")" class="no-select edit">Orders management</a>
+</div>
+
+<h2>Statistics</h2>
 <div class="card-deck mb-3 text-center">
+    <!-- Total revenue card -->
     <div class="card mb-4 shadow-sm">
         <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Tổng doanh thu</h4>
+            <h4 class="my-0 font-weight-normal">Total revenue</h4>
         </div>
         <div class="card-body">
             <h1 class="card-title pricing-card-title">@ViewBag.TotalSales <small class="text-muted">đ</small></h1>
         </div>
     </div>
+    <!-- Total orders card -->
     <div class="card mb-4 shadow-sm">
         <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Tổng đơn hàng</h4>
+            <h4 class="my-0 font-weight-normal">Total orders</h4>
         </div>
         <div class="card-body">
             <h1 class="card-title pricing-card-title">@ViewBag.TotalOrders <small class="text-muted"></small></h1>
         </div>
     </div>
+    <!-- Waiting for confirmation orders card -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Waiting for confirmation</h4>
+        </div>
+        <div class="card-body">
+            <h1 class="card-title pricing-card-title">@ViewBag.WaitingForConfirmationOrders <small class="text-muted"></small></h1>
+        </div>
+    </div>
+    <!-- On delivery orders card -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+            <h4 class="my-0 font-weight-normal">On delivery</h4>
+        </div>
+        <div class="card-body">
+            <h1 class="card-title pricing-card-title">@ViewBag.OnDeliveryOrders <small class="text-muted"></small></h1>
+        </div>
+    </div>
+    <!-- Completed orders card -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Completed</h4>
+        </div>
+        <div class="card-body">
+            <h1 class="card-title pricing-card-title">@ViewBag.CompletedOrders <small class="text-muted"></small></h1>
+        </div>
+    </div>
 </div>
-
 @*    <p>Tổng số tiền bán được: @ViewBag.TotalSales</p>
     <p>Tổng số hóa đơn: @ViewBag.TotalOrders</p>*@
-<p>
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#productsCollapse" aria-expanded="false" aria-controls="productsCollapse">
-        Products
-    </button>
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#BrandCollapse" aria-expanded="false" aria-controls="BrandCollapse">
-        Brand
-    </button>
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#customersCollapse" aria-expanded="false" aria-controls="customersCollapse">
-        Customers
-    </button>
+@*<p>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#productsCollapse" aria-expanded="false" aria-controls="productsCollapse">
+            Products
+        </button>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#BrandCollapse" aria-expanded="false" aria-controls="BrandCollapse">
+            Brand
+        </button>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#customersCollapse" aria-expanded="false" aria-controls="customersCollapse">
+            Customers
+        </button>
 
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#ordersCollapse" aria-expanded="false" aria-controls="ordersCollapse">
-        Orders
-    </button>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#ordersCollapse" aria-expanded="false" aria-controls="ordersCollapse">
+            Orders
+        </button>
 
-        </p>
-<div class="px-3 collapse" id="productsCollapse">
-    @{
-        Html.RenderAction("Index", "Products");
-    }
-    <hr />
-</div>
-<div class="px-3 collapse" id="BrandCollapse">
-    @{
-        Html.RenderAction("Index", "Brands");
-    }
-    <hr />
-</div>
-<div class="px-3 collapse" id="customersCollapse">
-    @{
-        Html.RenderAction("Index", "Customers");
-    }
-    <hr />
-</div>
-<div class="px-3 collapse" id="ordersCollapse">
-    @{
-        Html.RenderAction("Index", "Order");
-    }
-    <hr />
-</div>
+     </p>
+    <div class="px-3 collapse" id="productsCollapse">
+        @{
+            Html.RenderAction("Index", "Products");
+        }
+        <hr />
+    </div>
+    <div class="px-3 collapse" id="BrandCollapse">
+        @{
+            Html.RenderAction("Index", "Brands");
+        }
+        <hr />
+    </div>
+    <div class="px-3 collapse" id="customersCollapse">
+        @{
+            Html.RenderAction("Index", "Customers");
+        }
+        <hr />
+    </div>
+    <div class="px-3 collapse" id="ordersCollapse">
+        @{
+            Html.RenderAction("Index", "Order");
+        }
+        <hr />
+    </div>*@
 

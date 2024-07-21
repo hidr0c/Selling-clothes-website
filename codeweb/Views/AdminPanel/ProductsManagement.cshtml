@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "ProductsManagement";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Products Management</h1>
+    @{
+        Html.RenderAction("Index", "Products");
+    }
+    <hr />

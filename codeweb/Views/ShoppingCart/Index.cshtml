@@ -2,9 +2,9 @@
 
 @{
     ViewBag.Title = "ShowCart";
-    string placeholder_addr = (TempData["Address"] != null && (string)TempData["Address"] != "") ? "Nhập địa chỉ giao hàng" : "Nhập địa chỉ giao hàng";
-    string placeholder_phone = (TempData["PhoneNumber"] != null && (int)TempData["PhoneNumber"] != 0) ? " " : "Nhập Số điện thoại";
-    string placeholder_namecus = (TempData["NameCus"] != null && (int)TempData["NameCus"] != 0) ? " " : "Nhập tên người nhận";
+    string placeholder_addr = (TempData["Address"] != null && (string)TempData["Address"] != "") ? "Enter your home address" : "Enter your home address";
+    string placeholder_phone = (TempData["PhoneNumber"] != null && (int)TempData["PhoneNumber"] != 0) ? " " : "Enter your phone number";
+    string placeholder_namecus = (TempData["NameCus"] != null && (int)TempData["NameCus"] != 0) ? " " : "Username";
     string TotalMoney = "";
     if (Model != null && Model.Items.Count() > 0)
     {
@@ -92,7 +92,7 @@
 }
 
 <h2>Giỏ hàng của bạn@(TotalMoney)</h2>
-<a href="@Url.Action("Index", "Products")">&#8592 Tiếp tục mua hàng</a>
+<a href="@Url.Action("Index", "Products")">&#8592 Continue shopping</a>
 @if (Model != null && Model.Items.Count() > 0)
 {
     <div class="container-wrap product" style="justify-content: center; gap: 12px">
@@ -112,7 +112,7 @@
                     </div>
                     @using (Html.BeginForm("UpdateCartQuantity", "ShoppingCart"))
                     {
-                        <div style="padding-bottom: 5px">Số lượng</div>
+                        <div style="padding-bottom: 5px">Quantity</div>
                         <input type="hidden" value="@item._product.ProductID" name="idPro" />
                         <input class="quantity-input" type="number" min="0" max="@item._product.InvQuantity" value="@item._quantity" name="cartQuantity" />
                         <input style="background-color: transparent; border: none" type="submit" value="✓" />

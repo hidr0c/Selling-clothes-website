@@ -296,6 +296,13 @@
     <Content Include="Views\ShoppingCart\CheckOut.cshtml" />
     <Content Include="Views\Order\UserIndex.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\AdminPanel\ProductsManagement.cshtml" />
+    <Content Include="Views\AdminPanel\BrandsManagement.cshtml" />
+    <Content Include="Views\AdminPanel\CustomersManagement.cshtml" />
+    <Content Include="Views\AdminPanel\OrdersManagement.cshtml" />
+    <Content Include="Views\Order\Edit.cshtml" />
+    <Content Include="Views\Order\Delete.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
