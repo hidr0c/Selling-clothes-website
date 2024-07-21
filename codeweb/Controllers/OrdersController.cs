@@ -21,20 +21,8 @@ namespace codeweb.Controllers
                 return View(orders);
             }
 
-            // GET: Order/Edit/5
-            public ActionResult Edit(int id)
-            {
-                var order = db.OrderProes.Find(id);
-                if (order == null)
-                {
-                    return HttpNotFound();
-                }
-                return View(order);
-            }
-
-        // POST: Order/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        // GET: Order/Edit/5
+        public ActionResult Edit(int? id)
         {
             if (Session["IsAdmin"] == null || Session["IsAdmin"] is false)
             {
@@ -45,12 +33,58 @@ namespace codeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            OrderPro orderPro = db.OrderProes.Find(id);   
+            OrderPro orderPro = db.OrderProes.Find(id);
             if (orderPro == null)
             {
                 return HttpNotFound();
             }
             return View(orderPro);
+        }
+
+        // POST: Order/Edit/5
+        [HttpPost]
+        public ActionResult Edit([Bind(Include = "NameCus,PhoneNumber,AddressDelivery,orderStatus")] OrderPro orderPro)
+        {
+           
+                if (Session["IsAdmin"] == null || Session["IsAdmin"] is false)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                if (ModelState.IsValid)
+                {
+                    db.Entry(orderPro).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(orderPro);
+
+            /* if (Session["IsAdmin"] == null || Session["IsAdmin"] is false)
+             {
+                 return RedirectToAction("Index", "Home");
+             }
+
+             if (id == null)
+             {
+                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+             }
+             OrderPro orderPro = db.OrderProes.Find(id);
+             if (orderPro == null)
+             {
+                 return HttpNotFound();
+             }
+
+             // Cập nhật orderPro với dữ liệu mới từ form
+             orderPro.Status = collection["orderStatus"];
+             orderPro.AddressDelivery = collection["AddressDelivery"];
+             orderPro.PhoneNumber = int.Parse(collection["PhoneNumber"]);
+             orderPro.NameCus = collection["NameCus"];
+
+             // Lưu thay đổi vào cơ sở dữ liệu
+             db.Entry(orderPro).State = EntityState.Modified;
+             db.SaveChanges();
+
+             return RedirectToAction("Index");*/
         }
 
 
