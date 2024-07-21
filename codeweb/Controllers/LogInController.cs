@@ -30,7 +30,7 @@ namespace codeweb.Controllers
             var check = database.Customers.Where(s => s.NameCus == _user.NameCus && s.PasswordCus == _user.PasswordCus).FirstOrDefault();
             if (check == null)
             {
-                ViewBag.ErrorInfo = "Thông tin đăng nhập bị sai. Vui lòng kiểm tra";
+                ViewBag.ErrorInfo = "Login information is wrong, please check again";
                 return View("Index");
             }
             else
@@ -64,7 +64,7 @@ namespace codeweb.Controllers
                 {
                     if (_user.ConfirmPasswordCus != _user.PasswordCus)
                     {
-                        ViewBag.ErrorRegister = "Password nhập lại không đúng.";
+                        ViewBag.ErrorRegister = "Password is not match";
                         return View();
                     }
                     database.Configuration.ValidateOnSaveEnabled = false;
@@ -74,7 +74,7 @@ namespace codeweb.Controllers
                 }
                 else
                 {
-                    ViewBag.ErrorRegister = "Người dùng này đã tồn tại trước đó.";
+                    ViewBag.ErrorRegister = "Account existed, please log in";
                     return View();
                 }
             }

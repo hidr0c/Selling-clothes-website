@@ -47,7 +47,7 @@ namespace codeweb.Controllers
             {
                 if (customer.PasswordCus != customer.ConfirmPasswordCus)
                 {
-                    TempData["Error"] = "Mật khẩu nhập lại không trùng";
+                    TempData["Error"] = "Passwords doesn't match";
                     return View();
                 }
 

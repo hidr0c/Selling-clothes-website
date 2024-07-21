@@ -98,7 +98,7 @@ namespace KetNoiDatabase.Controllers
                 {
                     if (_user.AddressName == null || _user.AddressName == "")
                     {
-                        TempData["Error"] = "Bạn cần phải nhập địa chỉ giao hàng";
+                        TempData["Error"] = "Delivery address required";
                         return RedirectToAction("Index");
                     }
                     form["AddressDelivery"] = _user.AddressName;
@@ -187,7 +187,7 @@ namespace KetNoiDatabase.Controllers
                 cart.AddProductCart(_pro);
                 if (Session["UserId"] == null)
                 {
-                    TempData["Error"] = "Bạn cần phải đăng nhập trước khi thanh toán";
+                    TempData["Error"] = "You need to login first";
                     return RedirectToAction("Index");
                 }
                 int _userId = (int)Session["UserId"];
@@ -199,7 +199,7 @@ namespace KetNoiDatabase.Controllers
                 form["NameCus"] = _user.NameCus;
                 return RedirectToAction("CheckOut", "ShoppingCart", form);
             }
-            TempData["Error"] = "Sản phẩm không tồn tại hoặc đã bị xóa";
+            TempData["Error"] = "Product doesn't exists or has been deleted";
             return RedirectToAction("Index", "Products");
         }
 
