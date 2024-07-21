@@ -11,7 +11,7 @@
     <link href="@Url.Content("~/Content/css/CreateEditProducts.css")" rel="stylesheet" type="text/css" />
 }
 
-<h2>Chỉnh sửa sản phẩm</h2>
+<h2>Configure products</h2>
 <form action="/Products/Edit/@Model.ProductID" enctype="multipart/form-data" method="post" onsubmit="sanitizePrice(this)">
     @Html.AntiForgeryToken()
 
@@ -32,21 +32,21 @@
                     <textarea class="edit-product-name" id="NamePro" name="NamePro" rows="12" cols="50">@Model.NamePro</textarea>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="IDBrand">Hãng sản phẩm</label>
+                    <label class="control-label" for="IDBrand">Brand</label>
                     <div class="d-flex">
                         @Html.DropDownList("IDBrand", null, htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.IDBrand, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="IDBrand">Số lượng tồn kho</label>
+                    <label class="control-label" for="IDBrand">Remaining quantity</label>
                     <div class="d-flex">
                         <input class="form-control" type="number" name="InvQuantity" min="0" max="9999" id="InvQuantity" value="@Model.InvQuantity" />
                         @Html.ValidationMessageFor(model => model.IDBrand, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="ImagePro">Đường dẫn hình ảnh</label>
+                    <label class="control-label" for="ImagePro">Image link</label>
                     <div class="d-flex">
                         <input class="form-control" type="text" id="ImagePro" name="ImagePro" value="@Model.ImagePro" />
                         <input class="form-control" type="hidden" id="OldImagePro" name="OldImagePro" value="@Model.ImagePro"/>

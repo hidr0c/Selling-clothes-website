@@ -10,7 +10,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Chỉnh sửa hãng</h4>
+        <h4>Configure Brand</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.IDBrand)
@@ -48,7 +48,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10 mt-2">
-                <input style="margin-right:4px" type="submit" value="Lưu" class="btn btn-success" />
+                <input style="margin-right:4px" type="submit" value="Save" class="btn btn-success" />
                 @Html.ActionLink("Về trang", "Index", "", new { @class = "btn btn-warning" })
             </div>
         </div>

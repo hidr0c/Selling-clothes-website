@@ -13,9 +13,9 @@
 }
 
 <div style="margin-bottom: 24px" class="list-href">
-    <a href="/">Trang chủ</a>
+    <a href="/">Home</a>
     >
-    <a href="/Products">Danh sách sản phầm</a>
+    <a href="/Products">List of products</a>
     >
     <a href="/Brands/Details/@Model.Brand.IDBrand">@Model.Brand.BrandName</a>
     >
@@ -29,7 +29,7 @@
             <div style="position: relative; border-radius:20px; overflow: hidden;">
                 @if (Model.InvQuantity == 0)
                 {
-                    <div class="no-select out-of-stock-overlay">Hết hàng</div>
+                    <div class="no-select out-of-stock-overlay">Out of stock</div>
                 }
                 <img src="@Url.Content(Model.ImagePro)" style="width: 100%" alt="Product image" />
                 @*<img src="~/Image/Product/BanChaiTre.png" alt="Product image" />*@

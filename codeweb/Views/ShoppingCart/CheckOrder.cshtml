@@ -6,11 +6,11 @@
     decimal total = 0;
 }
 
-<h2>Kiểm tra thanh toán</h2>
+<h2>Check transaction</h2>
 @if (Model == null)
 {
     <form method="get" class="d-flex justify-content-center align-items-center flex-column" style="height: 40vh">
-        <h1>Nhập mã đơn hàng cần kiểm tra</h1>
+        <h1>Enter your order ID:</h1>
         <input style="border-radius: 10px; height: 10vh; text-align: center; font-size: larger" type="text" name="id">
     </form>
 }
@@ -19,11 +19,11 @@ else
 <table class="table">
     <tr>
         <th></th>
-        <th>Tên mặt hàng</th>
-        <th>Hãng</th>
-        <th>Số lượng</th>
-        <th>Giá tiền(đơn)</th>
-        <th>Thao tác</th>
+        <th>Product Name</th>
+        <th>Brand</th>
+        <th>Quantity</th>
+        <th>Price (for each)</th>
+        <th>Action</th>
     </tr>
     @foreach (var item in Model)
     {
@@ -52,5 +52,5 @@ else
     }
 
     </table>
-    <h2>Thành tiền: @(String.Format("{0:#,#.##}", total))đ</h2>
+    <h2>Total money: @(String.Format("{0:#,#.##}", total))đ</h2>
 }

@@ -31,7 +31,7 @@
     }
 </style>
 
-<h2>Chỉnh sửa thông tin</h2>
+<h2>Configure Information</h2>
 
 @using (Html.BeginForm())
 {
@@ -41,7 +41,7 @@
     @Html.HiddenFor(model => model.IDCus)
 
     <div class="d-flex flex-row gap-3 my-3">
-        <div class="label">Tên người dùng: </div>
+        <div class="label">Username: </div>
         @Html.EditorFor(model => model.NameCus, new { htmlAttributes = new { @class = "input-edit" } })
     </div>
 
@@ -51,25 +51,25 @@
     </div>
 
     <div class="d-flex flex-row gap-3 my-3">
-        <div class="label">Số điện thoại: </div>
+        <div class="label">Contact number: </div>
         @Html.EditorFor(model => model.PhoneCus, new { htmlAttributes = new { @class = "input-edit" } })
     </div>
 
     <div class="d-flex flex-row gap-3 my-3">
-        <div class="label">Địa chỉ hiện tại: </div>
+        <div class="label">Address: </div>
         @Html.EditorFor(model => model.AddressName, new { htmlAttributes = new { @class = "input-edit" } })
     </div>
 
 
     <hr class="my-4"/>
     <div class="d-flex flex-row gap-3 my-3">
-        <div class="label">Mật khẩu: </div>
+        <div class="label">Enter password </div>
         @Html.EditorFor(model => model.PasswordCus, new { htmlAttributes = new { @class = "input-edit", title = "Bỏ trống nếu dùng mật khẩu cũ", placeholder = "Bỏ trống nếu dùng mật khẩu cũ", @Value = "", autocomplete = "off", @Type = "password" } })
         @Html.HiddenFor(model => model.PasswordCus, new { @Name = "PrevPassword" })
     </div>
 
     <div class="d-flex flex-row gap-3 my-3">
-        <div class="label">Nhập lại mật khẩu: </div>
+        <div class="label">Enter password again </div>
         @Html.EditorFor(model => model.ConfirmPasswordCus, new { htmlAttributes = new { @class = "input-edit", @Value = "", autocomplete = "off", @Type = "password" } })
     </div>
 
