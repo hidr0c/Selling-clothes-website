@@ -91,7 +91,7 @@
     </style>
 }
 
-<h2>Giỏ hàng của bạn@(TotalMoney)</h2>
+<h2>Your cart @(TotalMoney)</h2>
 <a href="@Url.Action("Index", "Products")">&#8592 Continue shopping</a>
 @if (Model != null && Model.Items.Count() > 0)
 {
@@ -135,10 +135,10 @@
         }
         else
         {
-            <div>Bạn cần phải đăng nhập hoặc đăng ký trước khi thanh toán</div>
+            <div>You need to login to proceed to transaction page</div>
             <div>
-                <a href="@Url.Action("Index","Login")" class="btn btn-success">Đăng nhập</a>
-                <a href="@Url.Action("RegisterUser","Login")" class="btn btn-success">Đăng ký</a>
+                <a href="@Url.Action("Index","Login")" class="btn btn-success">Log in</a>
+                <a href="@Url.Action("RegisterUser","Login")" class="btn btn-success">Sign up</a>
             </div>
         }
     </div>
@@ -146,6 +146,6 @@
 else
 {
     <div class="empty-cart">
-        Chưa có sản phầm nào trong giỏ hàng...
+        There's no product in your cart yet...
     </div>
 }

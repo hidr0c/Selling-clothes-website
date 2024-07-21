@@ -27,11 +27,11 @@
         <div class="d-flex gap-4">
             @if (Model.InvQuantity == 0)
             {
-                <a class="no-select BuyNowBtn out-of-stock">Thêm vào giỏ</a>
+                <a class="no-select BuyNowBtn out-of-stock">Add to cart</a>
             }
             else
             {
-                <a href="/ShoppingCart/AddToCart/@Model.ProductID" class="no-select BuyNowBtn">Thêm vào giỏ</a>
+                <a href="/ShoppingCart/AddToCart/@Model.ProductID" class="no-select BuyNowBtn">Add to cart</a>
             }
             <img src="~/Image/svg/heart.svg" alt="favorite" />
         </div>

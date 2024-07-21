@@ -18,13 +18,13 @@ a
 }
 
 <div style="margin-bottom: 24px" class="list-href">
-    <a href="/">Trang chủ</a>
+    <a href="/">Home</a>
     >
-    <a href="@Request.Path"><b>Sản phẩm của @Model.Item1.BrandName</b></a>
+    <a href="@Request.Path"><b>Products of @Model.Item1.BrandName</b></a>
 </div>
 
 <div style="display:flex;flex-direction:row">
-    <h2>Các sản phẩm đến từ <b>@Model.Item1.BrandName</b></h2>
+    <h2>Products of <b>@Model.Item1.BrandName</b></h2>
     @if (Session["IsAdmin"] is true)
     {
         <div style="padding-left:20px">

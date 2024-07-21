@@ -10,7 +10,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Chỉnh sửa đơn hàng</h4>
+        <h4>Edit Order</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ID)
@@ -48,7 +48,7 @@
         </div>
 
         <div class="form-group">
-            <label for="orderStatus">Trạng thái đơn hàng:</label>
+            <label for="orderStatus">Order Status</label>
             <select id="orderStatus" name="orderStatus">
                 <option value="waitingForConfirmation" @(Model.Status == "waitingForConfirmation" ? "selected" : "")>Waiting for confirmation</option>
                 <option value="onDelivery" @(Model.Status == "onDelivery" ? "selected" : "")>On delivery</option>
