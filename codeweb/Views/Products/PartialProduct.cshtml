@@ -13,7 +13,7 @@
     <div class="position-relative product-image">
         @if (Model.InvQuantity == 0)
         {
-            <div class="no-select out-of-stock-overlay">Hết hàng</div>
+            <div class="no-select out-of-stock-overlay">Out of stock</div>
         }
         <img src="@Url.Content(Model.ImagePro)" />
     </div>

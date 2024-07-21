@@ -18,7 +18,7 @@
 @if (Session["IsAdmin"] is true)
 {
     <p>
-        @Html.ActionLink("Tạo mới", "Create", "", new { @class = "btn btn-success" })
+        @Html.ActionLink("Create new", "Create", "", new { @class = "btn btn-success" })
     </p>
 }
 
@@ -27,7 +27,7 @@
     >
     <a href="/Products"><b>List of products</b></a>
     >
-    <a href="@Request.Path">Trang @CurrentPage</a>
+    <a href="@Request.Path">Page @CurrentPage</a>
 </div>
 
 <div class="container-wrap product" style="justify-content: center; gap: 12px">
