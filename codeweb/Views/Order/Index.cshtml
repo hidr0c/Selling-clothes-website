@@ -5,24 +5,33 @@
     Layout = ViewBag.Layout;
 }
 
-<h4>Sửa bảng <b>Đơn hàng</b></h4>
+<h4>Edit table <b>Orders</b></h4>
 
 @if (Session["IsAdmin"] is true)
 {
     <p>
-        @Html.ActionLink("Tạo mới", "Create", "", new { @class = "btn btn-success" })
+        @Html.ActionLink("Create", "Create", "", new { @class = "btn btn-success" })
     </p>
 }
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.IDCus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameCus)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DateOrder)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.AddressDelivery)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Status)

@@ -14,17 +14,15 @@ namespace codeweb.Controllers
         // GET: AdminPanel
         public ActionResult Index(int? month)
         {
-         
-                // Get the total sales amount
-                decimal totalSales = database.OrderProes.Sum(o => o.TotalMoney);
+            // Get the total sales amount
+            decimal totalSales = database.OrderProes.Select(o => (decimal?)o.TotalMoney).DefaultIfEmpty(0M).Sum().Value;
 
-                // Get the total number of orders
-                int totalOrders = database.OrderProes.Count();
+            // Get the total number of orders
+            int totalOrders = database.OrderProes.Count();
 
-                ViewBag.TotalSales = totalSales;
-                ViewBag.TotalOrders = totalOrders;
+            ViewBag.TotalSales = totalSales;
+            ViewBag.TotalOrders = totalOrders;
 
-           
             return View();
         }
     }

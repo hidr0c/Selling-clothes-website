@@ -119,6 +119,8 @@ namespace KetNoiDatabase.Controllers
                 OrderPro _order = new OrderPro(); //Bang Hoa Don San pham
 
                 _order.DateOrder = DateTime.Now;
+                _order.PhoneNumber = int.Parse(form["PhoneNumber"]);
+                _order.NameCus = form["NameCus"];
                 _order.AddressDelivery = form["AddressDelivery"];
                 _order.IDCus = int.Parse(form["CodeCustomer"]);
 

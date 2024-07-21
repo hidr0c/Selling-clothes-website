@@ -21,7 +21,7 @@ namespace codeweb.Models
         [Column(TypeName = "date")]
         public DateTime? DateOrder { get; set; }
 
-        public string CusName { get; set; }
+        public string NameCus { get; set; }
         public int? IDCus { get; set; }
         public int PhoneNumber { get; set; }
         public string AddressDelivery { get; set; }
@@ -30,7 +30,7 @@ namespace codeweb.Models
         public decimal TotalMoney { get; set; }
         public decimal TotalTax { get; set; }
         public decimal TotalDiscount { get; set; }
-        public string Status { get; set; }
+        public string Status { get; set; } = "Waiting for confirmation";
 
         public virtual Customer Customer { get; set; }
 
