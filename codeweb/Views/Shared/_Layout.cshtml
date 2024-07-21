@@ -89,18 +89,18 @@
                         {
                             <div>Hello, <b>@Session["NameCus"]</b>!</div>
                             <hr style="margin: 0.3em 0;" />
-                            <a href="@Url.Action("Index", "Profile")">Thông tin khách hàng</a>
-                            <a href="@Url.Action("LogoutUser", "Login")">Đăng xuất</a>
+                            <a href="@Url.Action("Index", "Profile")">Customer Information</a>
+                            <a href="@Url.Action("LogoutUser", "Login")">Log out</a>
                         }
                         else
                         {
                             <div>Hello, Anonymous user</div>
                             <hr style="margin: 0.3em 0;" />
-                            <a href="@Url.Action("Index", "Login")">Đăng nhập</a>
-                            <a href="@Url.Action("RegisterUser", "Login")">Đăng ký</a>
+                            <a href="@Url.Action("Index", "Login")">Log in</a>
+                            <a href="@Url.Action("RegisterUser", "Login")">Sign up</a>
                         }
                         <hr style="margin: 0.3em 0;" />
-                        <a href="@Url.Action("CheckOrder", "ShoppingCart")">Kiểm tra đơn hàng</a>
+                        <a href="@Url.Action("CheckOrder", "ShoppingCart")">Check order</a>
                     </div>
                 </div>
             </div>
