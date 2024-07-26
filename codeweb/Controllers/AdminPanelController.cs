@@ -24,7 +24,7 @@ namespace codeweb.Controllers
 
             // Get the total sales amount from completed orders
             decimal totalSales = database.OrderProes
-                .Where(o => o.Status == "completed")
+                .Where(o => o.Status == "Completed")
                 .Select(o => (decimal?)o.TotalMoney)
                 .DefaultIfEmpty(0M)
                 .Sum()

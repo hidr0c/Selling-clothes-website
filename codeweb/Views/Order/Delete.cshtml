@@ -41,7 +41,7 @@
         }
     </ul>
 
-    @using (Html.BeginForm("OrdersManagement", "AdminPanel", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    @using (Html.BeginForm("Delete", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
 

@@ -60,74 +60,62 @@ namespace codeweb.Controllers
                 return View(orderPro);
         }
 
-        /* if (Session["IsAdmin"] == null || Session["IsAdmin"] is false)
-         {
-             return RedirectToAction("Index", "Home");
-         }
 
-         if (id == null)
-         {
-             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-         }
-         OrderPro orderPro = db.OrderProes.Find(id);
-         if (orderPro == null)
-         {
-             return HttpNotFound();
-         }
-
-         // Cập nhật orderPro với dữ liệu mới từ form
-         orderPro.Status = collection["orderStatus"];
-         orderPro.AddressDelivery = collection["AddressDelivery"];
-         orderPro.PhoneNumber = int.Parse(collection["PhoneNumber"]);
-         orderPro.NameCus = collection["NameCus"];
-
-         // Lưu thay đổi vào cơ sở dữ liệu
-         db.Entry(orderPro).State = EntityState.Modified;
-         db.SaveChanges();
-
-         return RedirectToAction("Index");*/
-
-
-
-        // GET: Order/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
+        {
+            if (Session["IsAdmin"] == null || (bool)Session["IsAdmin"] == false)
             {
-                var order = db.OrderProes.Find(id);
-                if (order == null)
-                {
-                    return HttpNotFound();
-                }
-                return View(order);
+                return RedirectToAction("Index", "Home");
             }
 
-        // POST: Order/Delete/5
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            var order = db.OrderProes.Find(id);
-
-            // Xóa tất cả các chi tiết đơn hàng liên quan
-            foreach (var detail in order.OrderDetails.ToList())
+            if (id == null)
             {
-                db.OrderDetails.Remove(detail);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            db.OrderProes.Remove(order);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        public ActionResult Details(int id)
-        {
-            OrderPro order = db.OrderProes.Find(id);
-            if (order == null)
+            OrderPro orderPro = db.OrderProes.Find(id);
+            if (orderPro == null)
             {
                 return HttpNotFound();
             }
-            return View(order);
+            return View(orderPro);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            if (Session["IsAdmin"] == null || (bool)Session["IsAdmin"] == false)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            OrderPro orderPro = db.OrderProes.Find(id);
+            if (orderPro != null)
+            {
+                // Find and delete related order details
+                var relatedOrderDetails = db.OrderDetails.Where(od => od.IDOrder == id);
+                db.OrderDetails.RemoveRange(relatedOrderDetails);
+
+                // Now it's safe to remove the order
+                db.OrderProes.Remove(orderPro);
+                db.SaveChanges();
+                return RedirectToAction("OrdersManagement", "AdminPanel");
+            }
+            return View(orderPro);
         }
 
 
-    }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+
 
     }
+
+}
