@@ -43,7 +43,7 @@ namespace codeweb.Controllers
 
         // POST: Order/Edit/5
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "NameCus,PhoneNumber,AddressDelivery,Status")] OrderPro orderPro)
+        public ActionResult Edit(OrderPro orderPro)
         {
            
                 if (Session["IsAdmin"] == null || Session["IsAdmin"] is false)
@@ -55,7 +55,7 @@ namespace codeweb.Controllers
                 {
                     db.Entry(orderPro).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("OrdersManagement","AdminPanel");
                 }
                 return View(orderPro);
         }
