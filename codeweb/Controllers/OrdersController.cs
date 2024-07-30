@@ -20,6 +20,20 @@ namespace codeweb.Controllers
                 var orders = db.OrderProes.ToList();
                 return View(orders);
             }
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            OrderPro orderPro = db.OrderProes.Find(id);
+            if (orderPro == null)
+            {
+                return HttpNotFound();
+            }
+            return View(orderPro);
+        }
+
 
         // GET: Order/Edit/5
         public ActionResult Edit(int? id)
@@ -113,7 +127,7 @@ namespace codeweb.Controllers
             }
             base.Dispose(disposing);
         }
-
+ 
 
 
     }

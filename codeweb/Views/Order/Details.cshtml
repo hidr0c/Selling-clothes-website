@@ -1,5 +1,10 @@
 ﻿@model codeweb.Models.OrderPro
 
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 <h2>Order Details</h2>
 
 <p>Order ID: @Model.ID</p>
@@ -14,7 +19,7 @@
         <th>Name</th>
         <th>Brand</th>
         <th>Quantity</th>
-        <th>Price (for each)</th>
+        <th>Price</th>
     </tr>
     @foreach (var item in Model.OrderDetails)
     {
@@ -39,3 +44,5 @@
         </tr>
     }
 </table>
+
+

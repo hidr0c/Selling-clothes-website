@@ -12,6 +12,7 @@ namespace codeweb.Models
         public Model1()
             : base("name=Database")
         {
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public static IEnumerable<object> Cart { get; internal set; }

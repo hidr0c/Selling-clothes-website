@@ -22,31 +22,33 @@ namespace codeweb.Controllers
             int onDeliveryOrders = database.OrderProes.Count(o => o.Status == "On delivery");
             int completedOrders = database.OrderProes.Count(o => o.Status == "Completed");
 
-            // Get the total sales amount from completed orders
+       /*     // Get the total sales amount from completed orders
             decimal totalSales = database.OrderProes
                 .Where(o => o.Status == "Completed")
                 .Select(o => (decimal?)o.TotalMoney)
                 .DefaultIfEmpty(0M)
                 .Sum()
-                .GetValueOrDefault();
+                .GetValueOrDefault();*/
+
+      /*      // Calculate total revenue after order status is "Completed"
+            decimal totalRevenueAfterCompleted = database.OrderProes
+                .Where(o => o.Status == "Completed")
+                .Select(o => (decimal?)o.TotalMoney)
+                .DefaultIfEmpty(0M)
+                .Sum()
+                .GetValueOrDefault();*/
+
+            decimal totalSales = database.OrderProes.Where(o => o.Status == "Completed").Select(o => (decimal?)o.TotalMoney).DefaultIfEmpty(0M).Sum().Value;
+
 
             ViewBag.TotalSales = totalSales;
             ViewBag.TotalOrders = totalOrders;
+
             ViewBag.WaitingForConfirmationOrders = waitingForConfirmationOrders;
             ViewBag.OnDeliveryOrders = onDeliveryOrders;
             ViewBag.CompletedOrders = completedOrders;
 
             return View();
-            /*// Get the total sales amount
-            decimal totalSales = database.OrderProes.Select(o => (decimal?)o.TotalMoney).DefaultIfEmpty(0M).Sum().Value;
-
-            // Get the total number of orders
-            int totalOrders = database.OrderProes.Count();
-
-            ViewBag.TotalSales = totalSales;
-            ViewBag.TotalOrders = totalOrders;
-
-            return View();*/
         }
         public ActionResult ProductsManagement()
         {
